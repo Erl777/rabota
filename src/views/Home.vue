@@ -5,12 +5,14 @@
       <div class="nhome__main-top"
            style="background: linear-gradient( rgba(36, 60, 156, 0.78),rgba(36, 60, 156, 0.78) ),url(#) no-repeat; background-size: cover; background-position-x: center;">
         <div class="nhome__main-header">
-          <button class="mobile-nav-btn jsOpenNavMenu"><img src="../assets/menu.png" alt=""
+          <button class="mobile-nav-btn jsOpenNavMenu" @click="showMobileMenu = !showMobileMenu">
+            <img src="../assets/menu.png" alt=""
                                                             role="presentation"/>
           </button>
           <div class="filter-overlay nav-overlay jsNavOverlay">
           </div>
-          <nav class="nhome__nav jsNavMenu">
+          <transition name="fade">
+            <nav class="nhome__nav jsNavMenu" v-show="showMobileMenu" :class="{ 'active-nav': showMobileMenu }">
             <a class="nhome__nav-item nhome__nav-item_logo" href="#">
               <img src="../assets/logo-main.png" alt="Логотип rabota.today" role="presentation"/>
               <img src="../assets/logo-main-small.png" alt="Логотип rabota.today" role="presentation"/>
@@ -21,10 +23,10 @@
             <!--            <?php endif; ?>-->
             <div class="geolocation">
               <img src="../assets/geolocation.png" alt="Геолокация">
-              <div class="country-select">
+              <div class="country-select" @click="showSelectCountryUrl = !showSelectCountryUrl"
+                   :class="{ 'country-select-active': showSelectCountryUrl }">
                 <!--                <span class="jsOpenCountrySelect"><?= $current_country ? $current_country->name : 'Выберите Страну' ?> <b></b></span>-->
-                <span class="jsOpenCountrySelect" @click="showSelectCountryUrl = !showSelectCountryUrl"
-                      :class="{ 'country-select-active': showSelectCountryUrl }"> Выберите Страну <b></b></span>
+                <span class="jsOpenCountrySelect" > Выберите Страну <b></b></span>
                 <ul v-show="showSelectCountryUrl">
                   <li>
                     <a href="/" data-id="" class="jsOpenCountrySelectUrl">
@@ -37,7 +39,12 @@
                     <!--                      <?= $country->name ?>-->
                     <!--                    </a>-->
                     <a href="#" data-id="<?= $country->id ?>" class="jsOpenCountrySelectUrl">
-                      Страна
+                      ДНР
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" data-id="<?= $country->id ?>" class="jsOpenCountrySelectUrl">
+                      ЛНР
                     </a>
                   </li>
                   <!--                  <?php endforeach; ?>-->
@@ -90,6 +97,7 @@
             <!--            </div>-->
             <!--            <?php endif ?>-->
           </nav>
+          </transition>
         </div>
         <div class="nhome__main-content">
           <div class="nhome__main-content-search">
@@ -112,7 +120,7 @@
                                class='white-text'> 007 вакансий </a>
                         </span>
               <input name="search_text" class="nhome__form-input" placeholder="Я ищу..." type="text"/>
-              <button type="button" class="nhome__search btn-red"><i class="fa fa-search"></i></button>
+              <button type="button" class="nhome__search btn-red"><img src="../assets/icons/search.svg" alt=""></button>
             </form>
             <a class="btn btn-red mr20" href="#">резюме</a>
             <a class="btn btn-red" href="#">вакансии</a>
@@ -498,6 +506,7 @@
               </div>
             </div>
           </slide>
+          <hooper-navigation slot="hooper-addons"></hooper-navigation>
         </hooper>
 
       </div>
@@ -530,13 +539,16 @@
         <!--            foreach ($cities as $city):?>-->
         <!--        <?php if ($i < 4): ?>-->
         <!--        <a href="<?= Vacancy::getSearchPageUrl(false, $city->slug) ?>"><?= $city->name ?></a>-->
-        <a href="#"> city->name </a>
+        <a href="#"> Донецк </a>
+        <a href="#"> Макеевка </a>
+        <a href="#"> Горловка </a>
+        <a href="#"> Луганск </a>
         <!--        <?php-->
         <!--                endif;-->
         <!--                $i++;-->
         <!--            endforeach; ?>-->
         <!--        <a href="<?=Url::toRoute(['/main_page/default/city'])?>">все города</a>-->
-        <a href="#">все города</a>
+        <a href="/cities">все города</a>
       </div>
       <div class="nhome__footer-item">
         <div class="nhome__footer-item-head">
@@ -545,10 +557,13 @@
         </div>
         <!--        <?php foreach ($categories as $category):?>-->
         <!--        <a href="<?= Vacancy::getSearchPageUrl($category->slug) ?>"><?= $category->name ?></a>-->
-        <a href="#"> category->name </a>
+        <a href="#"> IT, компьютеры, интернет </a>
+        <a href="#"> Администрация, руководство </a>
+        <a href="#"> Бугалтерия, аудит </a>
+        <a href="#"> Гостинично-ресторанный бизнес </a>
         <!--        <?php endforeach; ?>-->
         <!--        <a href="<?= Vacancy::getSearchPageUrl() ?>">все вакансии</a>-->
-        <a href="#">все вакансии</a>
+        <a href="/vacancy">все вакансии</a>
       </div>
       <div class="nhome__footer-item">
         <div class="nhome__footer-item-head">
@@ -557,14 +572,16 @@
         </div>
         <!--        <?php foreach ($professions as $profession):?>-->
         <!--        <a href="<?= Vacancy::getSearchPageUrl(false, false, $profession->slug) ?>"><?= $profession->title ?></a>-->
-        <a href="#"> title </a>
         <!--        <?php endforeach; ?>-->
         <!--        <?php if($current_country):?>-->
         <!--        <a href="<?=Url::toRoute(["/$current_country->slug/professions"])?>">все профессии</a>-->
-        <a href="#">все профессии</a>
+        <a href="#">Авиадиспетчер</a>
+        <a href="#">Авиатехник</a>
+        <a href="#">Автослесарь</a>
+        <a href="#">Автоэлектрик</a>
         <!--        <?php else:?>-->
         <!--        <a href="<?=Url::toRoute(['/main_page/default/professions'])?>">все профессии</a>-->
-        <a href="#">все профессии</a>
+        <a href="/professions">все профессии</a>
         <!--        <?php endif ?>-->
       </div>
     </div>
@@ -575,7 +592,7 @@
 <script>
   // @ is an alias to /src
   // import HelloWorld from '@/components/HelloWorld.vue'
-  import { Hooper, Slide } from 'hooper';
+  import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper';
   import 'hooper/dist/hooper.css';
 
 
@@ -584,6 +601,7 @@
     data() {
       return {
         showSelectCountryUrl: false,
+        showMobileMenu: true,
         hooperSettings: {
           itemsToShow: 3,
           itemsToSlide: 1,
@@ -594,19 +612,41 @@
         }
       }
     },
+    mounted() {
+      let country_select = document.querySelector('.country-select');
+      let country_select_span = document.querySelector('.jsOpenCountrySelect');
+      document.body.addEventListener('click', (e) =>{
+        let target = e.target;
+        console.log(target);
+        if(target !== country_select && target !== country_select_span && !target.classList.contains('jsOpenCountrySelectUrl')){
+          this.showSelectCountryUrl = false;
+        }
+      });
+      if(document.body.clientWidth < 1250){
+        this.showMobileMenu = false
+      }
+    },
     components: {
       // HelloWorld,
       Hooper,
-      Slide
+      Slide,
+      HooperNavigation
     },
-    methods: {}
+    methods: {
+
+    }
   }
+
 </script>
 
 <style scoped>
 
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s ease;
+  }
+
   .hooper-slide.is-current {
-    background-color: rgba(255, 0, 11, 0.5);
+    /*background-color: rgba(255, 0, 11, 0.5);*/
     width: 96%;
     margin-left: 10px !important;
     -webkit-transition: all ease .5s;
@@ -622,13 +662,58 @@
       margin-left: 0 !important;
       margin-right: 0 !important; } }
 
+  .hooper-slide.is-current .home-card{
+    margin-left: 10px !important;
+  }
+
   /*.hooper{*/
   /*  height: auto;*/
   /*}*/
 
-  .is-current{
-
+  .active-nav {
+    -webkit-transform: translateX(0)!important;
+    -ms-transform: translateX(0)!important;
+    transform: translateX(0)!important;
+    -webkit-transition: all ease 1s!important;
+    -o-transition: all ease 1s!important;
+    transition: all ease 1s!important;
   }
+
+  .home-card .single-card__tr{
+    left: 50px;
+  }
+
+  .jsOpenCountrySelect b{
+    pointer-events: none;
+  }
+
+  .footer__craft-link:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    height: 20px;
+    width: 20px;
+    background: url("../assets/craft-red.png") no-repeat 50%;
+    background-size: contain; }
+  @media (max-width: 993px) {
+    .footer__craft-link {
+      font-size: 10px; } }
+
+  .home-card {
+    width: 90%;
+    min-height: 230px !important;
+    /*margin: 15px 10px 0 !important;*/
+    margin: 12px 10px 0 !important;
+    margin-left: 43px !important; }
+  @media (max-width: 1500px) {
+    .home-card {
+      margin-left: 33px !important; } }
+  @media (max-width: 575px) {
+    .home-card {
+      width: auto;
+      margin-left: 0 !important;
+      margin-right: 0 !important; } }
 
   .home-card .btn-red{
     border-radius: 11px;
@@ -1700,10 +1785,18 @@
 
   .nhome__search {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 51px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+  }
+
+  .nhome__search img{
+    width: 15px;
+    height: 15px;
   }
 
   .nhome__nav {
@@ -1975,7 +2068,7 @@
     }
 
     .nhome__footer {
-      margin-top: -280px;
+      margin-top: -320px;
     }
   }
 
@@ -2115,6 +2208,11 @@
     list-style: none;
     overflow: hidden;
     z-index: 20;
+    margin-top: 0;
+  }
+
+  .country-select ul li{
+    text-align: left;
   }
 
   .country-select ul li a {

@@ -22,6 +22,15 @@
     /*height: 230px !important;*/
   }
 
+  .vk-bg {
+    background-color: #457ba1;
+  }
+
+  a{
+    text-align: left;
+    text-decoration: none;
+  }
+
   /*.hooper.is-vertical ul.hooper-track {*/
   /*  height: 720px*/
   /*}*/
