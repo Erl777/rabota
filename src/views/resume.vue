@@ -1,0 +1,1339 @@
+<template>
+  <div class="root">
+
+    <header class="header-wrap jsHeaderIndex">
+      <img class="header-wrap__bg" src="../assets/bg_header_vacancies.jpeg" alt="Фоновое изображение">
+      <img class="header-wrap__emblem" src="../assets/img2.png" alt="Фоновая эмблема" role="presentation">
+      <div class="container">
+        <div class="header">
+          <div class="home__main-top">
+            <div class="home__main-header">
+              <button class="mobile-nav-btn jsOpenNavMenu">
+                <img src="../assets/menu.png" alt="Мобильное меню" role="presentation">
+              </button>
+              <div class="filter-overlay nav-overlay jsNavOverlay">
+              </div>
+              <nav class="home__nav jsNavMenu">
+                <a class="home__nav-item home__nav-item_logo" href="/">
+                  <img src="../assets/logo-main.png" alt="Логотип rabota.today" role="presentation">
+                  <img src="../assets/logo_mob.png" alt="Логотип rabota.today" role="presentation">
+                </a>
+                <a class="home__nav-item border-top-header" href="/resume">Резюме</a>
+                <a class="home__nav-item border-top-header" href="/vacancy">Вакансии</a>
+                <button class="home__nav-item jsLogin">
+                  Вход
+                </button>
+
+              </nav>
+              <div class="home__main-email align-items-center"><span class="home__main-ico">@</span><a href="mailto:info@rabota.today">info@rabota.today</a>
+              </div>
+              <a class="home__mobile-logo" href="/">
+                <img src="../assets/logo-main.png" alt="Логотип rabota.today" role="presentation">
+              </a>
+            </div>
+            <div class="home__main-content">
+              <form class="home__form" action="/vacancy" method="get">                    <input name="search_text" class="home__form-input" placeholder="Я ищу..." type="text">
+                <button type="submit" class="home__search btn-red"><i class="fa fa-search"></i></button>
+              </form>
+              <a class="btn btn-red mr20" href="/personal-area/add-resume">разместить резюме</a>
+              <a class="btn btn-red" href="/personal-area/add-vacancy">создать вакансию</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="all-block all-resume">
+      <img class="all-block__dots2" src="../assets/bg-dots.png" alt="Точки" role="presentation">
+      <div class="all-block__circle">
+      </div>
+      <div class="all-block__content">
+        <button class="filter-btn jsShowFilter">Фильтр
+        </button>
+        <div class="container">
+          <div class="v-content-top">
+            <div class="home__aside-header">
+              <h1 class="resume__title">Резюме соискателей - Подбор персонала </h1>
+              <div class="search"><input type="text" placeholder="Поиск" name="resume_search_text">
+                <button id="search" class="btn-red"><i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="v-content-bottom container-for-sidebar" style="position: relative;">
+            <div class="filter-overlay jsFilterOverlay">
+            </div>
+            <div class="v-content-bottom__left sidebar jsOpenFilter" id="sidebar" style="">
+              <button class="vl-btn btn-card btn-red jsAccept btn-accept jsAcceptScrollFixed" style="">Применить</button>
+              <div class="filter-close jsHideFilter"><span></span><span></span>
+              </div>
+              <div class="sidebar-inner" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+                <div class="vl-block">
+                  <select class="vl-block__cities jsDutiesSelect select2-hidden-accessible" multiple="" data-select2-id="4" tabindex="-1" aria-hidden="true">
+                    <option></option>
+                    <option value="4">Разработка API</option>
+                    <option value="5">Посадка страниц</option>
+                    <option value="6">Интеграция сервисов</option>
+                    <option value="8"> поиск новых клиентов</option>
+                    <option value="22">PHP</option>
+                    <option value="23">MySQL</option>
+                    <option value="24">Git</option>
+                    <option value="25">JavaScript</option>
+                    <option value="26">Yii2</option>
+                    <option value="27">Nginx</option>
+                    <option value="28">HTML</option>
+                    <option value="29">Laravel</option>
+                    <option value="30">Vue</option>
+                    <option value="32">MS Office</option>
+                    <option value="33">1С-Бухгалтерия</option>
+                    <option value="34">Фотосъемка</option>
+                    <option value="35">Photoshop</option>
+                    <option value="37">Nero Vision Xtra</option>
+                    <option value="38">Знание оргтехники</option>
+                    <option value="39">ОC Windows </option>
+                    <option value="41">Компьютерное железо</option>
+                    <option value="43">Apache</option>
+                    <option value="44">Python</option>
+                    <option value="45">RebbitMQ</option>
+                    <option value="46">Composer</option>
+                    <option value="47">SPA</option>
+                    <option value="48">Rest</option>
+                    <option value="49">Linux</option>
+                    <option value="50">Redis</option>
+                    <option value="57">CRM</option>
+                    <option value="59">Планирование</option>
+                    <option value="60">Бюджетирование</option>
+                    <option value="61">Деловое общение</option>
+                    <option value="62">продажи</option>
+                    <option value="63">графика</option>
+                    <option value="64">Corel Drow</option>
+                    <option value="65">CSS</option>
+                  </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style="width: 265px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Выберите навыки" style="width: 263px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                </div>
+                <div class="vl-block">
+                  <select class="vl-block__cities jsCitiesSelect select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                    <option data-select2-id="3"></option>
+                    <option value="doneck">Донецк</option>
+                    <option value="makeevka">Макеевка</option>
+                    <option value="gorlovka">Горловка</option>
+                    <option value="lugansk">Луганск</option>
+                    <option value="shahtersk">Шахтёрск</option>
+                    <option value="amvrosievka">Амвросиевка</option>
+                    <option value="sverdlovsk">Свердловск</option>
+                    <option value="torez">Торез</option>
+                    <option value="enakievo">Енакиево</option>
+                    <option value="snezhnoe">Снежное</option>
+                    <option value="xarcyzsk">Харцызск</option>
+                    <option value="yasinovataya">Ясиноватая</option>
+                    <option value="alchevsk">Алчевск</option>
+                    <option value="antracit">Антрацит</option>
+                    <option value="debalcevo">Дебальцево</option>
+                    <option value="novoazovsk">Новоазовск</option>
+                    <option value="ilovaisk">Иловайск</option>
+                    <option value="bryanka">Брянка</option>
+                    <option value="stahanov">Стаханов</option>
+                    <option value="sedovo">Седово</option>
+                    <option value="zhdanovka">Ждановка</option>
+                    <option value="zuevka">Зуевка</option>
+                    <option value="nizhnyaya-krynka">Нижняя Крынка</option>
+                    <option value="starobeshevo">Старобешево</option>
+                    <option value="kirovskoe">Кировское</option>
+                    <option value="telmanovo">Тельманово</option>
+                    <option value="yunokommunarovsk">Юнокоммунаровск</option>
+                  </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 265px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u9u5-container"><span class="select2-selection__rendered" id="select2-u9u5-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Выберите город</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                </div>
+                <div class="vl-block">
+                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                    <p>Требуемый опыт
+                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                  </div>
+                  <div class="vl-block__check jsCheckBlock" style="display: none;">
+
+                    <label class="checkbox">
+                      <input type="checkbox" name="experience" data-id="0">
+                      <div class="checkbox__text">Без опыта работы                                        </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="experience" data-id="1">
+                      <div class="checkbox__text">От 1 года                                        </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="experience" data-id="2">
+                      <div class="checkbox__text">От 3 лет                                        </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="experience" data-id="3">
+                      <div class="checkbox__text">От 5 лет                                        </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="vl-block">
+                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                    <p>Категория
+                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                  </div>
+                  <div class="vl-block__check jsCheckBlock" style="display: none;">
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="it-kompyutery-internet" data-id="1">
+                      <div class="checkbox__text">IT, компьютеры, интернет </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="administraciya-rukovodstvo" data-id="2">
+                      <div class="checkbox__text">Администрация, руководство</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="buhgalteriya-audit" data-id="3">
+                      <div class="checkbox__text">Бухгалтерия, аудит</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="gostinichno-restorannyi-biznes" data-id="4">
+                      <div class="checkbox__text">Гостинично-ресторанный бизнес</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="dizain-tvorchestvo" data-id="5">
+                      <div class="checkbox__text">Дизайн, творчество </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="krasota-fitnes-sport" data-id="6">
+                      <div class="checkbox__text">Красота, фитнес, спорт </div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="kultura-muzyka-shou-biznes" data-id="7">
+                      <div class="checkbox__text">Культура, музыка, шоу-бизнес</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="logistika-sklad-ved" data-id="8">
+                      <div class="checkbox__text">Логистика, склад, ВЭД</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="marketing-reklama-pr" data-id="9">
+                      <div class="checkbox__text">Маркетинг, реклама, PR</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="medicina-farmacevtika" data-id="10">
+                      <div class="checkbox__text">Медицина, фармацевтика</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="nedvizhimost" data-id="11">
+                      <div class="checkbox__text">Недвижимость</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="obrazovanie-nauka" data-id="12">
+                      <div class="checkbox__text">Образование, наука</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="ohrana-bezopasnost" data-id="13">
+                      <div class="checkbox__text">Охрана, безопасность</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="prodazhi-zakupki" data-id="14">
+                      <div class="checkbox__text">Продажи, закупки</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="rabochie-specialnosti" data-id="15">
+                      <div class="checkbox__text">Рабочие специальности</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="roznichnaya-torgovlya" data-id="16">
+                      <div class="checkbox__text">Розничная торговля</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="sekretariat-deloproizvodstvo-axo" data-id="17">
+                      <div class="checkbox__text">Секретариат, делопроизводство, АХО</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="selskoe-hozyaistvo-agrobiznes" data-id="18">
+                      <div class="checkbox__text">Сельское хозяйство, агробизнес</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="smi-izdatelstvo-poligrafiya" data-id="19">
+                      <div class="checkbox__text">СМИ, издательство, полиграфия</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="strahovanie" data-id="20">
+                      <div class="checkbox__text">Страхование</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="stroitelstvo-arhitektura" data-id="21">
+                      <div class="checkbox__text">Строительство, архитектура</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="sfera-obsluzhivaniya" data-id="22">
+                      <div class="checkbox__text">Сфера обслуживания</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="telekommunikacii-i-svyaz" data-id="23">
+                      <div class="checkbox__text">Телекоммуникации и связь</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="top-menedzhment-rukovodstvo-vysshego-zvena" data-id="24">
+                      <div class="checkbox__text">Топ-менеджмент, руководство высшего звена</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="upravlenie-personalom-hr" data-id="26">
+                      <div class="checkbox__text">Управление персоналом, HR</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="finansy-bank" data-id="27">
+                      <div class="checkbox__text">Финансы, банк</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="yurisprudenciya" data-id="28">
+                      <div class="checkbox__text">Юриспруденция</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="rabota-dlya-studentov" data-id="29">
+                      <div class="checkbox__text">Работа для студентов</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="rabota-dlya-lyudei-s-invalidnostyu" data-id="30">
+                      <div class="checkbox__text">Работа для людей с инвалидностью</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="category" data-slug="transport-avto" data-id="32">
+                      <div class="checkbox__text">Транспорт, авто</div>
+                    </label>
+                  </div>
+                </div>
+                <div class="vl-block">
+                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                    <p>Вид занятости
+                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                  </div>
+                  <div class="vl-block__check jsCheckBlock" style="display: none;">
+                    <label class="checkbox">
+                      <input type="checkbox" name="employment_type" data-id="1">
+                      <div class="checkbox__text">Удалённая работа</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="employment_type" data-id="2">
+                      <div class="checkbox__text">Полная занятость</div>
+                    </label>
+                    <label class="checkbox">
+                      <input type="checkbox" name="employment_type" data-id="3">
+                      <div class="checkbox__text">Неполная занятость</div>
+                    </label>
+                  </div>
+                </div>
+                <div class="vl-block no-border">
+                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                    <p>Зарплата
+                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                  </div>
+                  <div class="vl-block__inputs jsCheckBlock" style="display: none;">
+                    <input type="text" name="min_salary" value="">
+                    <input type="text" name="max_salary" value="">
+                  </div>
+                </div>
+                <button class="vl-btn btn-card btn-red jsAccept jsAcceptScroll">Применить
+                </button>
+                <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 285px; height: 459px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
+            </div>
+            <div class="v-content-bottom__center scroll">
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="/media/resume/fd/5b/af11fcd0f932efe356d17e24e81c.jpeg" alt="Фото Филипсонов Дмитрий" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/171">
+                          Инженер-Конструктор. (Cad-Дизайнер)                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        По договоренности
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Филипсонов Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Конструктор                                            , ГП "ДонПКТИ"                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Сентябрь 2018                                                                                                                                </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 17.06.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="/media/resume/5c/d0/e2d922cdb4077b6a95ca1def35a0.jpeg" alt="Фото Филипсонов Дмитрий" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/190">
+                          Инженер-Электроник                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        По договоренности
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Филипсонов Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Конструктор                                            , ГУ "ДонПКТИ"                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Сентябрь 2018                                                                                                                                </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 17.06.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="/media/resume/e4/15/287d8c30eaf9b240ef21210a4c90.jpeg" alt="Фото Чешев Владимир" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/226">
+                          Программист                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        По договоренности
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Чешев Владимир                                                                                                                                    · Горловка                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Механик                                            , ООО "МАСТЕР - БУД"                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Февраль 2013                                                                                                                                    — Сентябрь 2014                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 06.06.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="/media/resume/19/92/e04a3ef5fb48fe8aa03ca6e820cd.jpeg" alt="Фото Николаева Валерия" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/225">
+                          Продавец-Консультант; Бариста                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        От 10 000 ₽
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Николаева Валерия                                                                                        · возраст - 20                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 04.06.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                  <div class="single-card-resume__soc">
+                    <p>Написать соискателю в сетях
+                    </p>
+                    <div class="single-card-resume__soc-block">
+                      <a class="vk-bg" rel="nofollow" target="_blank" href="https://vk.com/valerya.nickolaeva">
+                        <img src="../assets/vk.svg" alt="Иконка vk" role="presentation"></a>
+                      <a class="inst-bg" rel="nofollow" target="_blank" href="https://instagram.com/valerya_nickolaeva">
+                        <img src="../assets/instagram.svg" alt="Иконка instagram" role="presentation"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/224">
+                          Строитель                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        По договоренности
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      --------- Виталий                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 29.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/223">
+                          Инженер                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        По договоренности
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Екатерина Семенихина                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 26.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/222">
+                          Бухгалтер, Экономист                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        От 13 000 ₽
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Агаподченко Анна                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Бухгалтер по финансовым расчетам                                            , ЦКГБ №3 г Донецка                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Март 2020                                                                                                                                    — Май 2020                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 25.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/221">
+                          Администратор                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        От 13 000 ₽
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Трофимова Юлия                                                                                        · возраст - 27                                                                                                                                    · Харцызск                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Администратор                                            , Шоппинг                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Декабрь 2019                                                                                                                                    — Март 2020                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 23.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/207">
+                          Начальник Отдела, Менеджер По Логистике                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        От 30 000 ₽
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Шестаков Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-work">Последнее место работы
+                    </p>
+                    <p class="single-card-resume__name-work">Менеджер отдела маркетинга                                            , ООО «Завод «Донпласт»                                        </p>
+                    <p class="single-card-resume__date-work">
+                      Май 2007                                                                                                                                    — Март 2008                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 22.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <div class="single-card-resume">
+                <div class="single-card-resume__top">
+                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
+                  <div class="single-card-resume__top-left">
+                    <div class="single-card-resume__head">
+                      <h3>
+                        <a href="/resume/view/220">
+                          Сборщик Мебели                                                </a>
+                      </h3>
+                    </div>
+                    <span class="single-card-resume__price">
+                                                                                        От 10 000 ₽
+                                                                                    </span>
+                    <p class="single-card-resume__name">
+                      Авдеев Тарас                                                                                        · возраст - 42                                                                                                                                    · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-check">
+                      Обновлено 21.05.2020                                        </p>
+                  </div>
+                </div>
+                <div class="single-card-resume__bottom">
+                </div>
+              </div>
+              <ul class="search-pagination"><li class="first disabled"><span>&lt;&lt;</span></li>
+                <li class="prev disabled"><span>&lt;</span></li>
+                <li class="active"><a href="/resume?page=1" data-page="0">1</a></li>
+                <li><a href="/resume?page=2" data-page="1">2</a></li>
+                <li><a href="/resume?page=3" data-page="2">3</a></li>
+                <li><a href="/resume?page=4" data-page="3">4</a></li>
+                <li><a href="/resume?page=5" data-page="4">5</a></li>
+                <li class="next"><a href="/resume?page=2" data-page="1">&gt;</a></li>
+                <li class="last"><a href="/resume?page=16" data-page="15">&gt;&gt;</a></li></ul>                                    </div>
+            <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1120px; height: 2731px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
+        </div>
+      </div>
+    </section>    <footer class="footer">
+    <a class="footer__craft-link" href="https://web-artcraft.com/" target="_blank" rel="nofollow">Разработано CraftGroup</a>
+  </footer>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "resume"
+  }
+</script>
+
+<style scoped>
+
+  .header-wrap {
+    position: relative;
+    background: #243b9b;
+    z-index: 8; }
+  @media (max-width: 993px) {
+    .header-wrap {
+      overflow: hidden; } }
+  .header-wrap__dots {
+    position: absolute;
+    bottom: -35px;
+    right: 60px;
+    z-index: 1; }
+  @media (max-width: 993px) {
+    .header-wrap__dots {
+      display: none; } }
+  .header-wrap__bg {
+    position: absolute;
+    opacity: 0.35;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+  .header-wrap__emblem {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 250px;
+    height: auto; }
+  @media (max-width: 1300px) {
+    .header-wrap__emblem {
+      width: 150px; } }
+  @media (max-width: 993px) {
+    .header-wrap__emblem {
+      right: -40px; } }
+
+  .all-block {
+    position: relative;
+    background-color: #f8f8f8; }
+  .all-block__dots2 {
+    position: absolute;
+    bottom: 0;
+    left: 70px; }
+  @media (max-width: 769px) {
+    .all-block__dots2 {
+      display: none; } }
+  .all-block__circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: #dd3d34;
+    border-radius: 0 100% 0 0 / 100% 100% 0 0;
+    z-index: 0; }
+  @media (max-width: 769px) {
+    .all-block__circle {
+      width: 100px;
+      height: 100px; } }
+
+  .all-resume {
+    display: block; }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 55%;
+    margin: 1em;
+    width: 30%;
+    display: block; }
+  .footer__craft-link {
+    position: relative;
+    text-decoration: none;
+    color: #ff0200 !important;
+    font-size: 12px;
+    padding-left: 25px;
+    margin-left: 5px; }
+  @media (max-width: 699px) {
+    .footer__craft-link {
+      display: block;
+      line-height: 0.9; } }
+  .footer__craft-link:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    height: 20px;
+    width: 20px;
+    background: url("../assets/craft-red.png") no-repeat 50%;
+    background-size: contain; }
+  @media (max-width: 993px) {
+    .footer__craft-link {
+      font-size: 10px; } }
+
+  .home__main-top {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: calc(100% - 290px);
+    padding-top: 40px;
+    background-color: #243b9b;
+    border-radius: 33px 0 0; }
+  @media (max-width: 1750px) {
+    .home__main-top {
+      height: calc(100% - 255px); } }
+  @media (max-width: 993px) {
+    .home__main-top {
+      border-radius: 0; } }
+  /*.home__main-top:before {*/
+  /*  position: absolute;*/
+  /*  content: '';*/
+  /*  top: 0;*/
+  /*  bottom: 0;*/
+  /*  left: 0;*/
+  /*  right: 0;*/
+  /*  opacity: 0.65;*/
+  /*  !*background: url(../images/bg.png) no-repeat;*!*/
+  /*  background-size: cover; }*/
+  .home__main-header {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    letter-spacing: 0.17px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff; }
+  @media (max-width: 1350px) {
+    .home__main-header {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      margin-bottom: 40px;
+    } }
+  @media (max-width: 993px) {
+    .home__main-header {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; } }
+  .home__main-header a {
+    color: inherit;
+    text-decoration: none; }
+  .home__main-header a:hover {
+    color: #dd3d34; }
+  .home__main-ico {
+    margin-right: 10px;
+    color: #dd3d34;
+    font-size: 18px; }
+  .home__main-email {
+    margin-right: 50px; }
+  /*@media (max-width: 1350px) {*/
+  /*    .home__main-email {*/
+  /*        margin-left: 50px; } }*/
+  @media (max-width: 993px) {
+    .home__main-email {
+      margin-left: 0; } }
+  @media (max-width: 420px) {
+    .home__main-email {
+      width: 100%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin: 0 auto 20px; } }
+  .home__main-circle {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #dd3d34;
+    border-bottom-left-radius: 100%; }
+  @media (max-width: 1450px) {
+    .home__main-circle {
+      right: -100px; } }
+  @media (max-width: 769px) {
+    .home__main-circle {
+      display: none; } }
+  .home__main-bottom {
+    position: relative;
+    height: 320px;
+    margin-left: -60px;
+    margin-top: -50px;
+    color: #ffffff;
+    background-color: #0253a3;
+    border-radius: 0 0 0 33px;
+    -webkit-box-shadow: -9px 10px 29px 6px rgba(105, 105, 105, 0.24);
+    box-shadow: -9px 10px 29px 6px rgba(105, 105, 105, 0.24); }
+  @media (max-width: 1750px) {
+    .home__main-bottom {
+      height: 270px; } }
+  @media (max-width: 993px) {
+    .home__main-bottom {
+      margin-left: 0;
+      border-radius: 0; } }
+  @media (max-width: 576px) {
+    .home__main-bottom {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; } }
+  @media (max-width: 375px) {
+    .home__main-bottom {
+      height: 320px; } }
+  .home__main-bottom-img {
+    position: absolute;
+    top: -25px;
+    left: -50px;
+    z-index: 2; }
+  @media (max-width: 1750px) {
+    .home__main-bottom-img {
+      width: 200px;
+      height: auto; } }
+  @media (max-width: 1200px) {
+    .home__main-bottom-img {
+      width: 170px; } }
+  @media (max-width: 993px) {
+    .home__main-bottom-img {
+      left: 0; } }
+  @media (max-width: 576px) {
+    .home__main-bottom-img {
+      top: -125px;
+      left: auto; } }
+  .home__main-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 100px;
+    z-index: 2; }
+  @media (max-width: 1350px) {
+    /*.home__main-content {*/
+    /*    -ms-flex-wrap: wrap;*/
+    /*    flex-wrap: wrap;*/
+    /*    -webkit-box-pack: start;*/
+    /*    -ms-flex-pack: start;*/
+    /*    justify-content: flex-start;*/
+    /*    margin-bottom: 100px;*/
+    /*    margin-left: 50px; } }*/
+    .home__main-content {
+      display: none;
+    }
+  }
+  @media (max-width: 993px) {
+    .home__main-content {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin-top: 40px;
+      margin-left: 0; } }
+  @media (max-width: 576px) {
+    .home__main-content {
+      margin-bottom: 170px; } }
+  @media (max-width: 1350px) {
+    .home__main-content .btn {
+      margin-left: 0; } }
+  @media (max-width: 400px) {
+    .home__main-content .btn {
+      margin: 20px 10px 20px !important; } }
+  .home__title {
+    margin: 0;
+    margin-left: 120px;
+    font-size: 263px;
+    font-weight: 800;
+    line-height: 0.8;
+    text-transform: uppercase; }
+  @media (max-width: 1750px) {
+    .home__title {
+      margin-left: 65px;
+      font-size: 220px;
+      line-height: 0.6; } }
+  @media (max-width: 1450px) {
+    .home__title {
+      font-size: 175px; } }
+  @media (max-width: 1200px) {
+    .home__title {
+      font-size: 127px; } }
+  @media (max-width: 993px) {
+    .home__title {
+      margin-left: 0;
+      font-size: 21vw;
+      text-align: center; } }
+  @media (max-width: 576px) {
+    .home__title {
+      font-size: 22vw; } }
+  .home__desc {
+    width: 900px;
+    margin-top: 0;
+    margin-left: 30px;
+    margin-right: 390px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: right; }
+  @media (max-width: 1750px) {
+    .home__desc {
+      width: 785px;
+      margin-top: 25px; } }
+  @media (max-width: 1450px) {
+    .home__desc {
+      width: 78%; } }
+  @media (max-width: 993px) {
+    .home__desc {
+      width: 90%;
+      margin: 40px auto 0;
+      text-align: center; } }
+  .home__form {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 40px;
+    width: 540px;
+    margin: 8px 25px 8px 40px;
+    background-color: #fff;
+    border-radius: 20px; }
+  @media (max-width: 1350px) {
+    .home__form {
+      width: 80%;
+      margin-left: 0;
+      margin-bottom: 45px; } }
+  @media (max-width: 993px) {
+    .home__form {
+      margin-bottom: 20px; } }
+  @media (max-width: 400px) {
+    .home__form {
+      width: 94%;
+      margin: 0 0 20px; } }
+  .home__form:before {
+    position: absolute;
+    content: '';
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    border: 1px solid #ffffff;
+    border-radius: 28px;
+    opacity: 0.1; }
+  .home__form-input {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding-left: 25px;
+    border: none;
+    background-color: transparent; }
+  @media (max-width: 400px) {
+    .home__form-input {
+      width: 120px; } }
+  .home__form-select {
+    position: relative; }
+  .home__form-select:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 11px;
+    height: 18px;
+    width: 2px;
+    background-color: #dd3d34;
+    opacity: 0.26; }
+  .home__form-select .select2 {
+    width: 120px !important; }
+  .home__form-select .select2-container .select2-selection--single .select2-selection__rendered {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .home__form-select .select2,
+  .home__form-select .select2-selection__rendered,
+  .home__form-select .select2-container .select2-selection--single {
+    height: 100%; }
+  .home__form-select .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 0;
+    height: 100%; }
+  .home__form-select .select2-container--default .select2-selection--single {
+    border: none; }
+  .home__form-select .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 20px;
+    padding-right: 30px; }
+  .home__form-select .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: #000000; }
+  .home__form-select .select2-container--default .select2-selection--single .select2-selection__arrow b {
+    top: 45%;
+    margin-left: -17px;
+    border-width: 7px 7px 0 7px;
+    border-radius: 3px; }
+  .home__form-select .select2-container--default .select2-selection--single .select2-selection__arrow b:after {
+    position: absolute;
+    top: -8px;
+    left: -5px;
+    content: '';
+    border-color: #fff transparent transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0 5px; }
+  .home__form-select .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    top: 46%;
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    border-color: #888 transparent transparent transparent; }
+  .home__callback {
+    letter-spacing: 0.12px;
+    color: #fcf46b !important;
+    font-size: 9px;
+    font-weight: 500; }
+  .home__callback:hover {
+    color: #ffffff !important; }
+  .home__search {
+    position: relative;
+    width: 51px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer; }
+
+  .filter-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #282828;
+    opacity: 0;
+    -webkit-transition: all ease 1s;
+    -o-transition: all ease 1s;
+    transition: all ease 1s;
+    z-index: -1;
+  }
+
+  .home__nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 40px; }
+  @media (max-width: 1250px) {
+    .home__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #000000;
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-transition: all ease 1s;
+      -o-transition: all ease 1s;
+      transition: all ease 1s;
+      z-index: 100; }
+    .home__nav span {
+      color: #000000; } }
+  .home__nav-item {
+    padding: 3px 15px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    background: none;
+    border: none;
+    cursor: pointer; }
+  @media (max-width: 1250px) {
+    .home__nav-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      padding: 20px;
+      color: #a8a8a8;
+      border-bottom: 1px solid #e8e8e8; } }
+  .home__nav-item:hover {
+    color: #dd3d34; }
+
+  .home__mobile-logo {
+    display: none;
+  }
+
+  .header .home__nav-item_logo img:last-child {
+    display: none;
+  }
+
+  .header .home__nav-item_logo {
+    width: 200px;
+    overflow: hidden;
+  }
+
+  .header .home__main-top {
+    height: auto;
+    background: none;
+  }
+
+  .header .home__main-content {
+    margin: 100px 0 50px;
+  }
+
+  .header .home__main-header {
+    justify-content: center;
+  }
+
+  .v-content-top {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .home__aside-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 20px 95px 20px 0; }
+  @media (max-width: 998px) {
+    .home__aside-header {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      margin: 20px auto; } }
+  .home__aside-header-vacancy {
+    margin-left: auto;
+    margin-right: 60px;
+    color: #243b9b;
+    font-size: 19px;
+    font-weight: 700; }
+
+  .resume__title {
+    margin-bottom: 0;
+    font-size: 16px;
+    max-width: 550px;
+    margin-top: 0;
+  }
+
+  .search {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 100px; }
+  @media (max-width: 998px) {
+    .search {
+      margin: 20px 0 0; } }
+  .search input {
+    width: 300px;
+    padding: 7px 40px 7px 10px;
+    border: 1px solid #000000;
+    border-radius: 15px; }
+  .search button {
+    position: absolute;
+    right: 0;
+    border: none;
+    border-radius: 15px;
+    width: 32px;
+    height: 32px; }
+
+  .home__aside-header {
+    width: 100%;
+    margin: 20px 0;
+    justify-content: space-evenly;
+  }
+
+  .filter-btn {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    display: none;
+    padding: 15px 40px;
+    font-family: 'Muller', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    color: #ffffff;
+    background-image: -webkit-gradient(linear, right top, left top, from(#dd3d34), color-stop(99%, #af2a22), to(#af2a22));
+    background-image: -webkit-linear-gradient(right, #dd3d34 0%, #af2a22 99%, #af2a22 100%);
+    background-image: -o-linear-gradient(right, #dd3d34 0%, #af2a22 99%, #af2a22 100%);
+    background-image: linear-gradient(to left, #dd3d34 0%, #af2a22 99%, #af2a22 100%);
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 6; }
+  @media (max-width: 993px) {
+    .filter-btn {
+      display: block; } }
+
+  .v-content-bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 100px; }
+
+  .v-content-bottom__left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 275px;
+    z-index: 2; }
+  @media (max-width: 993px) {
+    .v-content-bottom__left {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 450px;
+      height: 70%;
+      padding-top: 20px;
+      background-color: #ffffff;
+      -webkit-transform: translateX(600px);
+      -ms-transform: translateX(600px);
+      transform: translateX(600px);
+      -webkit-transition: all ease 1s;
+      -o-transition: all ease 1s;
+      transition: all ease 1s;
+      z-index: 9; } }
+  @media (max-width: 500px) {
+    .v-content-bottom__left {
+      width: 300px;
+      padding-top: 40px; } }
+  .v-content-bottom__left .sidebar-inner {
+    background-color: #f8f8f8; }
+  @media (max-width: 993px) {
+    .v-content-bottom__left .sidebar-inner {
+      height: 100%;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      overflow-y: scroll; } }
+
+  .btn-card {
+    display: inline-block;
+    padding: 7px 15px 5px;
+    font-weight: 500;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.43px;
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+
+  .btn-accept {
+    position: fixed;
+    bottom: 20px;
+    width: 247.5px;
+    z-index: 2;
+    margin: 0;
+  }
+
+  .btn-active {
+    display: none; }
+
+  .vl-btn {
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    padding: 14px; }
+
+
+</style>

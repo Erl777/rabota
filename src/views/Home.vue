@@ -122,7 +122,8 @@
               <input name="search_text" class="nhome__form-input" placeholder="Я ищу..." type="text"/>
               <button type="button" class="nhome__search btn-red"><img src="../assets/icons/search.svg" alt=""></button>
             </form>
-            <a class="btn btn-red mr20" href="#">резюме</a>
+<!--            <a class="btn btn-red mr20" href="/resume">резюме</a>-->
+            <router-link class="btn-red btn mr20" :to="{ name: 'resume'}">резюме</router-link>
             <a class="btn btn-red" href="#">вакансии</a>
           </div>
           <!--          <div class="geolocation">-->
@@ -2256,6 +2257,11 @@
     display: flex;
     align-items: center;
   }
+
+
+
+  .no-border {
+    border: none; }
 
   .btn-red {
     color: #ffffff;

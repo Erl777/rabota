@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-<!--    <div id="nav">-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link>-->
-<!--    </div>-->
     <router-view/>
   </div>
 </template>
@@ -38,7 +34,6 @@
   /*.hooper-slide{*/
   /*  height: 230px !important;*/
   /*}*/
-
 
     @font-face {
         font-family: 'Muller';
@@ -332,6 +327,41 @@ svg {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+  .btn-red {
+    color: #ffffff;
+    background-color: #dd3d34;
+  }
+
+  .btn-red:hover {
+    color: #ffffff;
+    background-color: #921f19;
+  }
+
+  .btn {
+    position: relative;
+    padding: 15px 27px 13px;
+    margin: 8px;
+    text-decoration: none;
+    letter-spacing: 1.1px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 11px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .btn:before {
+    position: absolute;
+    content: '';
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    border: 1px solid #ffffff;
+    border-radius: 28px;
+    opacity: 0.1;
+  }
 
 .mobile-nav-btn {
     position: fixed;
