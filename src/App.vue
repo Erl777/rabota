@@ -10,6 +10,14 @@
     height: 730px;
   }
 
+  .btn-accept {
+    position: fixed;
+    bottom: 20px;
+    width: 247.5px !important;
+    z-index: 2;
+    margin: 0;
+  }
+
   .hooper.is-vertical ul.hooper-track {
     /*height: auto*/
   }
@@ -329,8 +337,8 @@ svg {
 }
 
   .btn-red {
-    color: #ffffff;
-    background-color: #dd3d34;
+    color: #ffffff !important;
+    background-color: #dd3d34 !important;
   }
 
   .btn-red:hover {

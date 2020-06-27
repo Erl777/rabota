@@ -141,189 +141,90 @@
                     <option value="yunokommunarovsk">Юнокоммунаровск</option>
                   </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 265px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u9u5-container"><span class="select2-selection__rendered" id="select2-u9u5-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Выберите город</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
                 </div>
-                <div class="vl-block">
-                  <div class="vl-block__head jsOpenCheck open-services-mob">
-                    <p>Требуемый опыт
-                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
-                  </div>
-                  <div class="vl-block__check jsCheckBlock" style="display: none;">
 
-                    <label class="checkbox">
-                      <input type="checkbox" name="experience" data-id="0">
-                      <div class="checkbox__text">Без опыта работы                                        </div>
+                <div class="vl-block">
+                  <div class="vl-block__head jsOpenCheck open-services-mob"
+                            @click="experienceShow = !experienceShow"
+                  >
+                    <p>Требуемый опыт
+                    </p>
+                    <span class="jsBtnPlus" v-show="!experienceShow">+</span>
+                    <span class="jsBtnMinus btn-active" v-show="experienceShow">-</span>
+                  </div>
+                  <div class="vl-block__check jsCheckBlock" v-show="experienceShow">
+
+                    <label class="checkbox" v-for="(item, index) in experience" :key="'exp' + index">
+                      <input type="checkbox" name="experience"
+                             :data-id="index"
+                             :value="item.value"
+                             v-model="checkedElements"
+                      >
+                      <span class="checkbox__text">{{item.value}}</span>
                     </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="experience" data-id="1">
-                      <div class="checkbox__text">От 1 года                                        </div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="experience" data-id="2">
-                      <div class="checkbox__text">От 3 лет                                        </div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="experience" data-id="3">
-                      <div class="checkbox__text">От 5 лет                                        </div>
-                    </label>
+
                   </div>
                 </div>
+
                 <div class="vl-block">
-                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                  <div class="vl-block__head jsOpenCheck open-services-mob"
+                       @click="categoriesShow = !categoriesShow"
+                  >
                     <p>Категория
-                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                    </p>
+                    <span class="jsBtnPlus" v-show="!categoriesShow">+</span>
+                    <span class="jsBtnMinus btn-active" v-show="categoriesShow">-</span>
                   </div>
-                  <div class="vl-block__check jsCheckBlock" style="display: none;">
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="it-kompyutery-internet" data-id="1">
-                      <div class="checkbox__text">IT, компьютеры, интернет </div>
+                  <div class="vl-block__check jsCheckBlock" v-show="categoriesShow">
+
+                    <label class="checkbox" v-for="(item, index) in categories" :key="'category' + index">
+                      <input type="checkbox" name="experience"
+                             :data-id="index"
+                             :value="item.value"
+                             v-model="checkedElements"
+                      >
+                      <span class="checkbox__text">{{item.value}}</span>
                     </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="administraciya-rukovodstvo" data-id="2">
-                      <div class="checkbox__text">Администрация, руководство</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="buhgalteriya-audit" data-id="3">
-                      <div class="checkbox__text">Бухгалтерия, аудит</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="gostinichno-restorannyi-biznes" data-id="4">
-                      <div class="checkbox__text">Гостинично-ресторанный бизнес</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="dizain-tvorchestvo" data-id="5">
-                      <div class="checkbox__text">Дизайн, творчество </div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="krasota-fitnes-sport" data-id="6">
-                      <div class="checkbox__text">Красота, фитнес, спорт </div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="kultura-muzyka-shou-biznes" data-id="7">
-                      <div class="checkbox__text">Культура, музыка, шоу-бизнес</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="logistika-sklad-ved" data-id="8">
-                      <div class="checkbox__text">Логистика, склад, ВЭД</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="marketing-reklama-pr" data-id="9">
-                      <div class="checkbox__text">Маркетинг, реклама, PR</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="medicina-farmacevtika" data-id="10">
-                      <div class="checkbox__text">Медицина, фармацевтика</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="nedvizhimost" data-id="11">
-                      <div class="checkbox__text">Недвижимость</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="obrazovanie-nauka" data-id="12">
-                      <div class="checkbox__text">Образование, наука</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="ohrana-bezopasnost" data-id="13">
-                      <div class="checkbox__text">Охрана, безопасность</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="prodazhi-zakupki" data-id="14">
-                      <div class="checkbox__text">Продажи, закупки</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="rabochie-specialnosti" data-id="15">
-                      <div class="checkbox__text">Рабочие специальности</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="roznichnaya-torgovlya" data-id="16">
-                      <div class="checkbox__text">Розничная торговля</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="sekretariat-deloproizvodstvo-axo" data-id="17">
-                      <div class="checkbox__text">Секретариат, делопроизводство, АХО</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="selskoe-hozyaistvo-agrobiznes" data-id="18">
-                      <div class="checkbox__text">Сельское хозяйство, агробизнес</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="smi-izdatelstvo-poligrafiya" data-id="19">
-                      <div class="checkbox__text">СМИ, издательство, полиграфия</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="strahovanie" data-id="20">
-                      <div class="checkbox__text">Страхование</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="stroitelstvo-arhitektura" data-id="21">
-                      <div class="checkbox__text">Строительство, архитектура</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="sfera-obsluzhivaniya" data-id="22">
-                      <div class="checkbox__text">Сфера обслуживания</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="telekommunikacii-i-svyaz" data-id="23">
-                      <div class="checkbox__text">Телекоммуникации и связь</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="top-menedzhment-rukovodstvo-vysshego-zvena" data-id="24">
-                      <div class="checkbox__text">Топ-менеджмент, руководство высшего звена</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="upravlenie-personalom-hr" data-id="26">
-                      <div class="checkbox__text">Управление персоналом, HR</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="finansy-bank" data-id="27">
-                      <div class="checkbox__text">Финансы, банк</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="yurisprudenciya" data-id="28">
-                      <div class="checkbox__text">Юриспруденция</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="rabota-dlya-studentov" data-id="29">
-                      <div class="checkbox__text">Работа для студентов</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="rabota-dlya-lyudei-s-invalidnostyu" data-id="30">
-                      <div class="checkbox__text">Работа для людей с инвалидностью</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="category" data-slug="transport-avto" data-id="32">
-                      <div class="checkbox__text">Транспорт, авто</div>
-                    </label>
+
                   </div>
                 </div>
+
                 <div class="vl-block">
-                  <div class="vl-block__head jsOpenCheck open-services-mob">
+                  <div class="vl-block__head open-services-mob"
+                       @click="employmentTypeShow = !employmentTypeShow"
+                  >
                     <p>Вид занятости
-                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                    </p>
+                    <span class="jsBtnPlus" v-show="!employmentTypeShow">+</span>
+                    <span class="jsBtnMinus btn-active" v-show="employmentTypeShow">-</span>
                   </div>
-                  <div class="vl-block__check jsCheckBlock" style="display: none;">
-                    <label class="checkbox">
-                      <input type="checkbox" name="employment_type" data-id="1">
-                      <div class="checkbox__text">Удалённая работа</div>
+                  <div class="vl-block__check jsCheckBlock" v-show="employmentTypeShow">
+
+                    <label class="checkbox" v-for="(item, index) in employmentType" :key="'employmentType' + index">
+                      <input type="checkbox" name="experience"
+                             :data-id="index"
+                             :value="item.value"
+                             v-model="checkedElements"
+                      >
+                      <span class="checkbox__text">{{item.value}}</span>
                     </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="employment_type" data-id="2">
-                      <div class="checkbox__text">Полная занятость</div>
-                    </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="employment_type" data-id="3">
-                      <div class="checkbox__text">Неполная занятость</div>
-                    </label>
+
                   </div>
                 </div>
+
                 <div class="vl-block no-border">
-                  <div class="vl-block__head jsOpenCheck open-services-mob">
-                    <p>Зарплата
-                    </p><span class="jsBtnPlus">+</span><span class="jsBtnMinus btn-active">-</span>
+                  <div class="vl-block__head open-services-mob"
+                       @click="paymentShow = !paymentShow"
+                  >
+                    <p>Зарплата</p>
+                    <span class="jsBtnPlus" v-show="!paymentShow">+</span>
+                    <span class="jsBtnMinus btn-active" v-show="paymentShow">-</span>
                   </div>
-                  <div class="vl-block__inputs jsCheckBlock" style="display: none;">
-                    <input type="text" name="min_salary" value="">
-                    <input type="text" name="max_salary" value="">
+                  <div class="vl-block__inputs jsCheckBlock" v-show="paymentShow">
+                    <input type="text" name="min_salary" value="" v-model="minSalary">
+                    <input type="text" name="max_salary" value="" v-model="maxSalary">
                   </div>
                 </div>
+
                 <button class="vl-btn btn-card btn-red jsAccept jsAcceptScroll">Применить
                 </button>
                 <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 285px; height: 459px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
@@ -609,7 +510,34 @@
 
 <script>
   export default {
-    name: "resume"
+    name: "resume",
+    data() {
+      return {
+        experienceShow: false,
+        categoriesShow: false,
+        employmentTypeShow: false,
+        paymentShow: false,
+        minSalary: '',
+        maxSalary: '',
+        experience: [
+          {value: 'Без опыта работы'},
+          {value: 'от 1 года'},
+          {value: 'от 3 лет'},
+          {value: 'от 5 лет'}
+        ],
+        categories: [
+          {value: 'IT, компьютеры, интернет '},
+          {value: 'Администрация, руководство'},
+          {value: 'Бухгалтерия, аудит'}
+        ],
+        employmentType: [
+          {value: 'Удаленная работа'},
+          {value: 'Полная занятость'},
+          {value: 'Неполная занятость'}
+        ],
+        checkedElements:[],
+      }
+    },
   }
 </script>
 
@@ -1325,14 +1253,14 @@
     margin: 0;
   }
 
-  .btn-active {
-    display: none; }
+  /*.btn-active {*/
+  /*  display: none; }*/
 
   .vl-btn {
     width: 90%;
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-left: 15px;
+    /*margin-left: 15px;*/
     padding: 14px; }
 
   .vl-block {
@@ -1698,5 +1626,35 @@
 
   .select2-container{box-sizing:border-box;display:inline-block;margin:0;position:relative;vertical-align:middle}.select2-container .select2-selection--single{box-sizing:border-box;cursor:pointer;display:block;height:28px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--single .select2-selection__rendered{display:block;padding-left:8px;padding-right:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.select2-container .select2-selection--single .select2-selection__clear{position:relative}.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered{padding-right:8px;padding-left:20px}.select2-container .select2-selection--multiple{box-sizing:border-box;cursor:pointer;display:block;min-height:32px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--multiple .select2-selection__rendered{display:inline-block;overflow:hidden;padding-left:8px;text-overflow:ellipsis;white-space:nowrap}.select2-container .select2-search--inline{float:left}.select2-container .select2-search--inline .select2-search__field{box-sizing:border-box;border:none;font-size:100%;margin-top:5px;padding:0}.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-dropdown{background-color:white;border:1px solid #aaa;border-radius:4px;box-sizing:border-box;display:block;position:absolute;left:-100000px;width:100%;z-index:1051}.select2-results{display:block}.select2-results__options{list-style:none;margin:0;padding:0}.select2-results__option{padding:6px;user-select:none;-webkit-user-select:none}.select2-results__option[aria-selected]{cursor:pointer}.select2-container--open .select2-dropdown{left:0}.select2-container--open .select2-dropdown--above{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--open .select2-dropdown--below{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-search--dropdown{display:block;padding:4px}.select2-search--dropdown .select2-search__field{padding:4px;width:100%;box-sizing:border-box}.select2-search--dropdown .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-search--dropdown.select2-search--hide{display:none}.select2-close-mask{border:0;margin:0;padding:0;display:block;position:fixed;left:0;top:0;min-height:100%;min-width:100%;height:auto;width:auto;opacity:0;z-index:99;background-color:#fff;filter:alpha(opacity=0)}.select2-hidden-accessible{border:0 !important;clip:rect(0 0 0 0) !important;-webkit-clip-path:inset(50%) !important;clip-path:inset(50%) !important;height:1px !important;overflow:hidden !important;padding:0 !important;position:absolute !important;width:1px !important;white-space:nowrap !important}.select2-container--default .select2-selection--single{background-color:#fff;border:1px solid #aaa;border-radius:4px}.select2-container--default .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--default .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold}.select2-container--default .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--default .select2-selection--single .select2-selection__arrow{height:26px;position:absolute;top:1px;right:1px;width:20px}.select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow{left:1px;right:auto}.select2-container--default.select2-container--disabled .select2-selection--single{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear{display:none}.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--default .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text}.select2-container--default .select2-selection--multiple .select2-selection__rendered{box-sizing:border-box;list-style:none;margin:0;padding:0 5px;width:100%}.select2-container--default .select2-selection--multiple .select2-selection__rendered li{list-style:none}.select2-container--default .select2-selection--multiple .select2-selection__placeholder{color:#999;margin-top:5px;float:left}.select2-container--default .select2-selection--multiple .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;margin-top:5px;margin-right:10px}.select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;cursor:default;float:left;margin-right:5px;margin-top:5px;padding:0 5px}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#999;cursor:pointer;display:inline-block;font-weight:bold;margin-right:2px}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{color:#333}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice,.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder,.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline{float:right}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{margin-left:2px;margin-right:auto}.select2-container--default.select2-container--focus .select2-selection--multiple{border:solid black 1px;outline:0}.select2-container--default.select2-container--disabled .select2-selection--multiple{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection__choice__remove{display:none}.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple{border-top-left-radius:0;border-top-right-radius:0}.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--default .select2-search--dropdown .select2-search__field{border:1px solid #aaa}.select2-container--default .select2-search--inline .select2-search__field{background:transparent;border:none;outline:0;box-shadow:none;-webkit-appearance:textfield}.select2-container--default .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--default .select2-results__option[role=group]{padding:0}.select2-container--default .select2-results__option[aria-disabled=true]{color:#999}.select2-container--default .select2-results__option[aria-selected=true]{background-color:#ddd}.select2-container--default .select2-results__option .select2-results__option{padding-left:1em}.select2-container--default .select2-results__option .select2-results__option .select2-results__group{padding-left:0}.select2-container--default .select2-results__option .select2-results__option .select2-results__option{margin-left:-1em;padding-left:2em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-2em;padding-left:3em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-3em;padding-left:4em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-4em;padding-left:5em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-5em;padding-left:6em}.select2-container--default .select2-results__option--highlighted[aria-selected]{background-color:#5897fb;color:white}.select2-container--default .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic .select2-selection--single{background-color:#f7f7f7;border:1px solid #aaa;border-radius:4px;outline:0;background-image:-webkit-linear-gradient(top, #fff 50%, #eee 100%);background-image:-o-linear-gradient(top, #fff 50%, #eee 100%);background-image:linear-gradient(to bottom, #fff 50%, #eee 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic .select2-selection--single:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--classic .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;margin-right:10px}.select2-container--classic .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--classic .select2-selection--single .select2-selection__arrow{background-color:#ddd;border:none;border-left:1px solid #aaa;border-top-right-radius:4px;border-bottom-right-radius:4px;height:26px;position:absolute;top:1px;right:1px;width:20px;background-image:-webkit-linear-gradient(top, #eee 50%, #ccc 100%);background-image:-o-linear-gradient(top, #eee 50%, #ccc 100%);background-image:linear-gradient(to bottom, #eee 50%, #ccc 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0)}.select2-container--classic .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow{border:none;border-right:1px solid #aaa;border-radius:0;border-top-left-radius:4px;border-bottom-left-radius:4px;left:1px;right:auto}.select2-container--classic.select2-container--open .select2-selection--single{border:1px solid #5897fb}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow{background:transparent;border:none}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single{border-top:none;border-top-left-radius:0;border-top-right-radius:0;background-image:-webkit-linear-gradient(top, #fff 0%, #eee 50%);background-image:-o-linear-gradient(top, #fff 0%, #eee 50%);background-image:linear-gradient(to bottom, #fff 0%, #eee 50%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0;background-image:-webkit-linear-gradient(top, #eee 50%, #fff 100%);background-image:-o-linear-gradient(top, #eee 50%, #fff 100%);background-image:linear-gradient(to bottom, #eee 50%, #fff 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0)}.select2-container--classic .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text;outline:0}.select2-container--classic .select2-selection--multiple:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--multiple .select2-selection__rendered{list-style:none;margin:0;padding:0 5px}.select2-container--classic .select2-selection--multiple .select2-selection__clear{display:none}.select2-container--classic .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;cursor:default;float:left;margin-right:5px;margin-top:5px;padding:0 5px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove{color:#888;cursor:pointer;display:inline-block;font-weight:bold;margin-right:2px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove:hover{color:#555}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice{float:right}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{margin-left:2px;margin-right:auto}.select2-container--classic.select2-container--open .select2-selection--multiple{border:1px solid #5897fb}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--multiple{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--classic .select2-search--dropdown .select2-search__field{border:1px solid #aaa;outline:0}.select2-container--classic .select2-search--inline .select2-search__field{outline:0;box-shadow:none}.select2-container--classic .select2-dropdown{background-color:#fff;border:1px solid transparent}.select2-container--classic .select2-dropdown--above{border-bottom:none}.select2-container--classic .select2-dropdown--below{border-top:none}.select2-container--classic .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--classic .select2-results__option[role=group]{padding:0}.select2-container--classic .select2-results__option[aria-disabled=true]{color:grey}.select2-container--classic .select2-results__option--highlighted[aria-selected]{background-color:#3875d7;color:#fff}.select2-container--classic .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic.select2-container--open .select2-dropdown{border-color:#5897fb}
 
+  /*.checkbox input {*/
+  /*  position: absolute;*/
+  /*  z-index: -1;*/
+  /*  opacity: 0;*/
+  /*  margin: 10px 0 0 20px; }*/
+
+  /*.vl-block__check{*/
+  /*  display: block !important;*/
+  /*}*/
+
+  .no-border{
+    border: none;
+  }
+
+  .checkbox{
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox input:checked + .checkbox__text:before {
+    background: #5fa7f1; }
+
+  .checkbox input:checked + .checkbox__text {
+    font-weight: 700; }
+
+  .checkbox input:checked + .checkbox__text:after {
+    opacity: 1;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s; }
 
 </style>
