@@ -33,7 +33,9 @@
             </div>
             <div class="home__main-content">
               <form class="home__form" action="/vacancy" method="get">                    <input name="search_text" class="home__form-input" placeholder="Я ищу..." type="text">
-                <button type="submit" class="home__search btn-red"><i class="fa fa-search"></i></button>
+                <button type="submit" class="home__search btn-red">
+                  <img src="../assets/icons/search.svg" alt="">
+                </button>
               </form>
               <a class="btn btn-red mr20" href="/personal-area/add-resume">разместить резюме</a>
               <a class="btn btn-red" href="/personal-area/add-vacancy">создать вакансию</a>
@@ -54,7 +56,7 @@
             <div class="home__aside-header">
               <h1 class="resume__title">Резюме соискателей - Подбор персонала </h1>
               <div class="search"><input type="text" placeholder="Поиск" name="resume_search_text">
-                <button id="search" class="btn-red"><i class="fa fa-search"></i>
+                <button id="search" class="btn-red"><img src="../assets/icons/search.svg" alt="">
                 </button>
               </div>
             </div>
@@ -68,78 +70,29 @@
               </div>
               <div class="sidebar-inner" style="position: relative; transform: translate3d(0px, 0px, 0px);">
                 <div class="vl-block">
-                  <select class="vl-block__cities jsDutiesSelect select2-hidden-accessible" multiple="" data-select2-id="4" tabindex="-1" aria-hidden="true">
-                    <option></option>
-                    <option value="4">Разработка API</option>
-                    <option value="5">Посадка страниц</option>
-                    <option value="6">Интеграция сервисов</option>
-                    <option value="8"> поиск новых клиентов</option>
-                    <option value="22">PHP</option>
-                    <option value="23">MySQL</option>
-                    <option value="24">Git</option>
-                    <option value="25">JavaScript</option>
-                    <option value="26">Yii2</option>
-                    <option value="27">Nginx</option>
-                    <option value="28">HTML</option>
-                    <option value="29">Laravel</option>
-                    <option value="30">Vue</option>
-                    <option value="32">MS Office</option>
-                    <option value="33">1С-Бухгалтерия</option>
-                    <option value="34">Фотосъемка</option>
-                    <option value="35">Photoshop</option>
-                    <option value="37">Nero Vision Xtra</option>
-                    <option value="38">Знание оргтехники</option>
-                    <option value="39">ОC Windows </option>
-                    <option value="41">Компьютерное железо</option>
-                    <option value="43">Apache</option>
-                    <option value="44">Python</option>
-                    <option value="45">RebbitMQ</option>
-                    <option value="46">Composer</option>
-                    <option value="47">SPA</option>
-                    <option value="48">Rest</option>
-                    <option value="49">Linux</option>
-                    <option value="50">Redis</option>
-                    <option value="57">CRM</option>
-                    <option value="59">Планирование</option>
-                    <option value="60">Бюджетирование</option>
-                    <option value="61">Деловое общение</option>
-                    <option value="62">продажи</option>
-                    <option value="63">графика</option>
-                    <option value="64">Corel Drow</option>
-                    <option value="65">CSS</option>
-                  </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style="width: 265px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="Выберите навыки" style="width: 263px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                  <multiselect
+                    v-model="multiSelectValue"
+                    tag-placeholder="Add this as new tag"
+                    placeholder="Выберите навыки"
+                    label="name" track-by="code"
+                    :options="multiSelectOptions"
+                    :multiple="true"
+                    :taggable="true"
+                    @tag="addTag">
+                  </multiselect>
+
                 </div>
                 <div class="vl-block">
-                  <select class="vl-block__cities jsCitiesSelect select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option data-select2-id="3"></option>
-                    <option value="doneck">Донецк</option>
-                    <option value="makeevka">Макеевка</option>
-                    <option value="gorlovka">Горловка</option>
-                    <option value="lugansk">Луганск</option>
-                    <option value="shahtersk">Шахтёрск</option>
-                    <option value="amvrosievka">Амвросиевка</option>
-                    <option value="sverdlovsk">Свердловск</option>
-                    <option value="torez">Торез</option>
-                    <option value="enakievo">Енакиево</option>
-                    <option value="snezhnoe">Снежное</option>
-                    <option value="xarcyzsk">Харцызск</option>
-                    <option value="yasinovataya">Ясиноватая</option>
-                    <option value="alchevsk">Алчевск</option>
-                    <option value="antracit">Антрацит</option>
-                    <option value="debalcevo">Дебальцево</option>
-                    <option value="novoazovsk">Новоазовск</option>
-                    <option value="ilovaisk">Иловайск</option>
-                    <option value="bryanka">Брянка</option>
-                    <option value="stahanov">Стаханов</option>
-                    <option value="sedovo">Седово</option>
-                    <option value="zhdanovka">Ждановка</option>
-                    <option value="zuevka">Зуевка</option>
-                    <option value="nizhnyaya-krynka">Нижняя Крынка</option>
-                    <option value="starobeshevo">Старобешево</option>
-                    <option value="kirovskoe">Кировское</option>
-                    <option value="telmanovo">Тельманово</option>
-                    <option value="yunokommunarovsk">Юнокоммунаровск</option>
-                  </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 265px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-u9u5-container"><span class="select2-selection__rendered" id="select2-u9u5-container" role="textbox" aria-readonly="true"><span class="select2-selection__placeholder">Выберите город</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                  <multiselect
+                    v-model="singleSelectValue"
+                    :options="singleSelectOptions"
+                    :searchable="true"
+                    :close-on-select="false"
+                    :show-labels="false"
+                    placeholder="Выберите город"></multiselect>
+
                 </div>
 
                 <div class="vl-block">
@@ -230,266 +183,40 @@
                 <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 285px; height: 459px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
             </div>
             <div class="v-content-bottom__center scroll">
-              <div class="single-card-resume">
+
+              <div class="single-card-resume" v-for="(item, index) in resume" :key="'resume' + index">
                 <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="/media/resume/fd/5b/af11fcd0f932efe356d17e24e81c.jpeg" alt="Фото Филипсонов Дмитрий" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/171">
-                          Инженер-Конструктор. (Cad-Дизайнер)                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        По договоренности
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Филипсонов Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
-                    </p>
-                    <p class="single-card-resume__name-work">Конструктор                                            , ГП "ДонПКТИ"                                        </p>
-                    <p class="single-card-resume__date-work">
-                      Сентябрь 2018                                                                                                                                </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 17.06.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="/media/resume/5c/d0/e2d922cdb4077b6a95ca1def35a0.jpeg" alt="Фото Филипсонов Дмитрий" role="presentation">
+                  <img class="single-card-resume__left-img" :src="item.imgSrc" alt="Фото Филипсонов Дмитрий" role="presentation">
                   <div class="single-card-resume__top-left">
                     <div class="single-card-resume__head">
                       <h3>
                         <a href="/resume/view/190">
-                          Инженер-Электроник                                                </a>
+                          {{item.head}}
+                        </a>
                       </h3>
                     </div>
                     <span class="single-card-resume__price">
-                                                                                        По договоренности
-                                                                                    </span>
+                        {{item.price}}
+                    </span>
                     <p class="single-card-resume__name">
-                      Филипсонов Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
+                      {{item.name}}                                                                                                                                  · Донецк                                                                                    </p>
+                    <p class="single-card-resume__last-work">
+                      Последнее место работы
                     </p>
-                    <p class="single-card-resume__name-work">Конструктор                                            , ГУ "ДонПКТИ"                                        </p>
+                    <p class="single-card-resume__name-work">
+                      {{item.lastWork}}
+                    </p>
                     <p class="single-card-resume__date-work">
-                      Сентябрь 2018                                                                                                                                </p>
+                      {{item.dateWork}}                                                                                                                              </p>
                     <p class="single-card-resume__last-check">
-                      Обновлено 17.06.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="/media/resume/e4/15/287d8c30eaf9b240ef21210a4c90.jpeg" alt="Фото Чешев Владимир" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/226">
-                          Программист                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        По договоренности
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Чешев Владимир                                                                                                                                    · Горловка                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
+                      {{item.lastCheck}}
                     </p>
-                    <p class="single-card-resume__name-work">Механик                                            , ООО "МАСТЕР - БУД"                                        </p>
-                    <p class="single-card-resume__date-work">
-                      Февраль 2013                                                                                                                                    — Сентябрь 2014                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 06.06.2020                                        </p>
                   </div>
                 </div>
                 <div class="single-card-resume__bottom">
                 </div>
               </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="/media/resume/19/92/e04a3ef5fb48fe8aa03ca6e820cd.jpeg" alt="Фото Николаева Валерия" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/225">
-                          Продавец-Консультант; Бариста                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        От 10 000 ₽
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Николаева Валерия                                                                                        · возраст - 20                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 04.06.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                  <div class="single-card-resume__soc">
-                    <p>Написать соискателю в сетях
-                    </p>
-                    <div class="single-card-resume__soc-block">
-                      <a class="vk-bg" rel="nofollow" target="_blank" href="https://vk.com/valerya.nickolaeva">
-                        <img src="../assets/vk.svg" alt="Иконка vk" role="presentation"></a>
-                      <a class="inst-bg" rel="nofollow" target="_blank" href="https://instagram.com/valerya_nickolaeva">
-                        <img src="../assets/instagram.svg" alt="Иконка instagram" role="presentation"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/224">
-                          Строитель                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        По договоренности
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      --------- Виталий                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 29.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/223">
-                          Инженер                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        По договоренности
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Екатерина Семенихина                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 26.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/222">
-                          Бухгалтер, Экономист                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        От 13 000 ₽
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Агаподченко Анна                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
-                    </p>
-                    <p class="single-card-resume__name-work">Бухгалтер по финансовым расчетам                                            , ЦКГБ №3 г Донецка                                        </p>
-                    <p class="single-card-resume__date-work">
-                      Март 2020                                                                                                                                    — Май 2020                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 25.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/221">
-                          Администратор                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        От 13 000 ₽
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Трофимова Юлия                                                                                        · возраст - 27                                                                                                                                    · Харцызск                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
-                    </p>
-                    <p class="single-card-resume__name-work">Администратор                                            , Шоппинг                                        </p>
-                    <p class="single-card-resume__date-work">
-                      Декабрь 2019                                                                                                                                    — Март 2020                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 23.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/207">
-                          Начальник Отдела, Менеджер По Логистике                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        От 30 000 ₽
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Шестаков Дмитрий                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-work">Последнее место работы
-                    </p>
-                    <p class="single-card-resume__name-work">Менеджер отдела маркетинга                                            , ООО «Завод «Донпласт»                                        </p>
-                    <p class="single-card-resume__date-work">
-                      Май 2007                                                                                                                                    — Март 2008                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 22.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
-              <div class="single-card-resume">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" src="../assets/empty_user.jpg" alt="Пустое фото резюме" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <a href="/resume/view/220">
-                          Сборщик Мебели                                                </a>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                                                                                        От 10 000 ₽
-                                                                                    </span>
-                    <p class="single-card-resume__name">
-                      Авдеев Тарас                                                                                        · возраст - 42                                                                                                                                    · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-check">
-                      Обновлено 21.05.2020                                        </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
-              </div>
+
               <ul class="search-pagination"><li class="first disabled"><span>&lt;&lt;</span></li>
                 <li class="prev disabled"><span>&lt;</span></li>
                 <li class="active"><a href="/resume?page=1" data-page="0">1</a></li>
@@ -509,8 +236,12 @@
 </template>
 
 <script>
+  import Multiselect from 'vue-multiselect'
   export default {
     name: "resume",
+    components: {
+      Multiselect
+    },
     data() {
       return {
         experienceShow: false,
@@ -536,12 +267,58 @@
           {value: 'Неполная занятость'}
         ],
         checkedElements:[],
+        // Multiselect
+        multiSelectValue: [
+
+        ],
+        multiSelectOptions: [
+          { name: 'Vue.js', code: 'vu' },
+          { name: 'Javascript', code: 'js' },
+          { name: 'Open Source', code: 'os' }
+        ],
+        // singleSelect
+        singleSelectValue: '',
+        singleSelectOptions: ['Донецк', 'Макеевка', 'Горловка',],
+        // Users
+        resume: [
+          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
+            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
+          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
+            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
+          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
+            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
+        ]
       }
     },
+    methods: {
+      addTag (newTag) {
+        const tag = {
+          name: newTag,
+          code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+        }
+        this.options.push(tag);
+        this.value.push(tag);
+      },
+      nameWithLang ({ name, language }) {
+        return `${name} — [${language}]`
+      }
+    }
   }
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style scoped>
+
+  #search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #search img{
+    width: 15px;
+    height: 15px;
+  }
 
   .header-wrap {
     position: relative;
@@ -1623,18 +1400,6 @@
     background-color: #dddddd;
     transition: all ease .3s;
   }
-
-  .select2-container{box-sizing:border-box;display:inline-block;margin:0;position:relative;vertical-align:middle}.select2-container .select2-selection--single{box-sizing:border-box;cursor:pointer;display:block;height:28px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--single .select2-selection__rendered{display:block;padding-left:8px;padding-right:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.select2-container .select2-selection--single .select2-selection__clear{position:relative}.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered{padding-right:8px;padding-left:20px}.select2-container .select2-selection--multiple{box-sizing:border-box;cursor:pointer;display:block;min-height:32px;user-select:none;-webkit-user-select:none}.select2-container .select2-selection--multiple .select2-selection__rendered{display:inline-block;overflow:hidden;padding-left:8px;text-overflow:ellipsis;white-space:nowrap}.select2-container .select2-search--inline{float:left}.select2-container .select2-search--inline .select2-search__field{box-sizing:border-box;border:none;font-size:100%;margin-top:5px;padding:0}.select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-dropdown{background-color:white;border:1px solid #aaa;border-radius:4px;box-sizing:border-box;display:block;position:absolute;left:-100000px;width:100%;z-index:1051}.select2-results{display:block}.select2-results__options{list-style:none;margin:0;padding:0}.select2-results__option{padding:6px;user-select:none;-webkit-user-select:none}.select2-results__option[aria-selected]{cursor:pointer}.select2-container--open .select2-dropdown{left:0}.select2-container--open .select2-dropdown--above{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--open .select2-dropdown--below{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-search--dropdown{display:block;padding:4px}.select2-search--dropdown .select2-search__field{padding:4px;width:100%;box-sizing:border-box}.select2-search--dropdown .select2-search__field::-webkit-search-cancel-button{-webkit-appearance:none}.select2-search--dropdown.select2-search--hide{display:none}.select2-close-mask{border:0;margin:0;padding:0;display:block;position:fixed;left:0;top:0;min-height:100%;min-width:100%;height:auto;width:auto;opacity:0;z-index:99;background-color:#fff;filter:alpha(opacity=0)}.select2-hidden-accessible{border:0 !important;clip:rect(0 0 0 0) !important;-webkit-clip-path:inset(50%) !important;clip-path:inset(50%) !important;height:1px !important;overflow:hidden !important;padding:0 !important;position:absolute !important;width:1px !important;white-space:nowrap !important}.select2-container--default .select2-selection--single{background-color:#fff;border:1px solid #aaa;border-radius:4px}.select2-container--default .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--default .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold}.select2-container--default .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--default .select2-selection--single .select2-selection__arrow{height:26px;position:absolute;top:1px;right:1px;width:20px}.select2-container--default .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--default[dir="rtl"] .select2-selection--single .select2-selection__arrow{left:1px;right:auto}.select2-container--default.select2-container--disabled .select2-selection--single{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__clear{display:none}.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--default .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text}.select2-container--default .select2-selection--multiple .select2-selection__rendered{box-sizing:border-box;list-style:none;margin:0;padding:0 5px;width:100%}.select2-container--default .select2-selection--multiple .select2-selection__rendered li{list-style:none}.select2-container--default .select2-selection--multiple .select2-selection__placeholder{color:#999;margin-top:5px;float:left}.select2-container--default .select2-selection--multiple .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;margin-top:5px;margin-right:10px}.select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;cursor:default;float:left;margin-right:5px;margin-top:5px;padding:0 5px}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#999;cursor:pointer;display:inline-block;font-weight:bold;margin-right:2px}.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{color:#333}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice,.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder,.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-search--inline{float:right}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{margin-left:2px;margin-right:auto}.select2-container--default.select2-container--focus .select2-selection--multiple{border:solid black 1px;outline:0}.select2-container--default.select2-container--disabled .select2-selection--multiple{background-color:#eee;cursor:default}.select2-container--default.select2-container--disabled .select2-selection__choice__remove{display:none}.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple{border-top-left-radius:0;border-top-right-radius:0}.select2-container--default.select2-container--open.select2-container--below .select2-selection--single,.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--default .select2-search--dropdown .select2-search__field{border:1px solid #aaa}.select2-container--default .select2-search--inline .select2-search__field{background:transparent;border:none;outline:0;box-shadow:none;-webkit-appearance:textfield}.select2-container--default .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--default .select2-results__option[role=group]{padding:0}.select2-container--default .select2-results__option[aria-disabled=true]{color:#999}.select2-container--default .select2-results__option[aria-selected=true]{background-color:#ddd}.select2-container--default .select2-results__option .select2-results__option{padding-left:1em}.select2-container--default .select2-results__option .select2-results__option .select2-results__group{padding-left:0}.select2-container--default .select2-results__option .select2-results__option .select2-results__option{margin-left:-1em;padding-left:2em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-2em;padding-left:3em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-3em;padding-left:4em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-4em;padding-left:5em}.select2-container--default .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option{margin-left:-5em;padding-left:6em}.select2-container--default .select2-results__option--highlighted[aria-selected]{background-color:#5897fb;color:white}.select2-container--default .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic .select2-selection--single{background-color:#f7f7f7;border:1px solid #aaa;border-radius:4px;outline:0;background-image:-webkit-linear-gradient(top, #fff 50%, #eee 100%);background-image:-o-linear-gradient(top, #fff 50%, #eee 100%);background-image:linear-gradient(to bottom, #fff 50%, #eee 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic .select2-selection--single:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--single .select2-selection__rendered{color:#444;line-height:28px}.select2-container--classic .select2-selection--single .select2-selection__clear{cursor:pointer;float:right;font-weight:bold;margin-right:10px}.select2-container--classic .select2-selection--single .select2-selection__placeholder{color:#999}.select2-container--classic .select2-selection--single .select2-selection__arrow{background-color:#ddd;border:none;border-left:1px solid #aaa;border-top-right-radius:4px;border-bottom-right-radius:4px;height:26px;position:absolute;top:1px;right:1px;width:20px;background-image:-webkit-linear-gradient(top, #eee 50%, #ccc 100%);background-image:-o-linear-gradient(top, #eee 50%, #ccc 100%);background-image:linear-gradient(to bottom, #eee 50%, #ccc 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFCCCCCC', GradientType=0)}.select2-container--classic .select2-selection--single .select2-selection__arrow b{border-color:#888 transparent transparent transparent;border-style:solid;border-width:5px 4px 0 4px;height:0;left:50%;margin-left:-4px;margin-top:-2px;position:absolute;top:50%;width:0}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__clear{float:left}.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow{border:none;border-right:1px solid #aaa;border-radius:0;border-top-left-radius:4px;border-bottom-left-radius:4px;left:1px;right:auto}.select2-container--classic.select2-container--open .select2-selection--single{border:1px solid #5897fb}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow{background:transparent;border:none}.select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color:transparent transparent #888 transparent;border-width:0 4px 5px 4px}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single{border-top:none;border-top-left-radius:0;border-top-right-radius:0;background-image:-webkit-linear-gradient(top, #fff 0%, #eee 50%);background-image:-o-linear-gradient(top, #fff 0%, #eee 50%);background-image:linear-gradient(to bottom, #fff 0%, #eee 50%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFEEEEEE', GradientType=0)}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0;background-image:-webkit-linear-gradient(top, #eee 50%, #fff 100%);background-image:-o-linear-gradient(top, #eee 50%, #fff 100%);background-image:linear-gradient(to bottom, #eee 50%, #fff 100%);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEEEEEE', endColorstr='#FFFFFFFF', GradientType=0)}.select2-container--classic .select2-selection--multiple{background-color:white;border:1px solid #aaa;border-radius:4px;cursor:text;outline:0}.select2-container--classic .select2-selection--multiple:focus{border:1px solid #5897fb}.select2-container--classic .select2-selection--multiple .select2-selection__rendered{list-style:none;margin:0;padding:0 5px}.select2-container--classic .select2-selection--multiple .select2-selection__clear{display:none}.select2-container--classic .select2-selection--multiple .select2-selection__choice{background-color:#e4e4e4;border:1px solid #aaa;border-radius:4px;cursor:default;float:left;margin-right:5px;margin-top:5px;padding:0 5px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove{color:#888;cursor:pointer;display:inline-block;font-weight:bold;margin-right:2px}.select2-container--classic .select2-selection--multiple .select2-selection__choice__remove:hover{color:#555}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice{float:right}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice{margin-left:5px;margin-right:auto}.select2-container--classic[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove{margin-left:2px;margin-right:auto}.select2-container--classic.select2-container--open .select2-selection--multiple{border:1px solid #5897fb}.select2-container--classic.select2-container--open.select2-container--above .select2-selection--multiple{border-top:none;border-top-left-radius:0;border-top-right-radius:0}.select2-container--classic.select2-container--open.select2-container--below .select2-selection--multiple{border-bottom:none;border-bottom-left-radius:0;border-bottom-right-radius:0}.select2-container--classic .select2-search--dropdown .select2-search__field{border:1px solid #aaa;outline:0}.select2-container--classic .select2-search--inline .select2-search__field{outline:0;box-shadow:none}.select2-container--classic .select2-dropdown{background-color:#fff;border:1px solid transparent}.select2-container--classic .select2-dropdown--above{border-bottom:none}.select2-container--classic .select2-dropdown--below{border-top:none}.select2-container--classic .select2-results>.select2-results__options{max-height:200px;overflow-y:auto}.select2-container--classic .select2-results__option[role=group]{padding:0}.select2-container--classic .select2-results__option[aria-disabled=true]{color:grey}.select2-container--classic .select2-results__option--highlighted[aria-selected]{background-color:#3875d7;color:#fff}.select2-container--classic .select2-results__group{cursor:default;display:block;padding:6px}.select2-container--classic.select2-container--open .select2-dropdown{border-color:#5897fb}
-
-  /*.checkbox input {*/
-  /*  position: absolute;*/
-  /*  z-index: -1;*/
-  /*  opacity: 0;*/
-  /*  margin: 10px 0 0 20px; }*/
-
-  /*.vl-block__check{*/
-  /*  display: block !important;*/
-  /*}*/
 
   .no-border{
     border: none;

@@ -6,6 +6,17 @@
 
 <style>
 
+  .home__search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home__search img{
+    width: 15px;
+    height: 15px;
+  }
+
   .hooper.is-vertical{
     height: 730px;
   }
