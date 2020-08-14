@@ -33,78 +33,68 @@
             </div>
             <div class="home__main-content">
               <form class="home__form" action="/vacancy" method="get">                    <input name="search_text" class="home__form-input" placeholder="Я ищу..." type="text">
-                <button type="submit" class="home__search btn-red">
-                  <img src="../assets/icons/search.svg" alt="">
-                </button>
-              </form>
-              <a class="btn btn-red mr20" href="/personal-area/add-resume">разместить резюме</a>
+                <button type="submit" class="home__search btn-red"><i class="fa fa-search"></i></button>                    </form>                    <a class="btn btn-red mr20" href="/personal-area/add-resume">разместить резюме</a>
               <a class="btn btn-red" href="/personal-area/add-vacancy">создать вакансию</a>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    <section class="all-block all-resume">
-      <img class="all-block__dots2" src="../assets/bg-dots.png" alt="Точки" role="presentation">
-      <div class="all-block__circle">
-      </div>
-      <div class="all-block__content">
-        <button class="filter-btn jsShowFilter">Фильтр
-        </button>
-        <div class="container">
-          <div class="v-content-top">
-            <div class="home__aside-header">
-              <h1 class="resume__title">Резюме соискателей - Подбор персонала </h1>
-              <div class="search"><input type="text" placeholder="Поиск" name="resume_search_text">
-                <button id="search" class="btn-red"><img src="../assets/icons/search.svg" alt="">
-                </button>
-              </div>
+    </header>    <section class="all-block all-vacancies">
+    <img class="all-block__dots2" src="/images/bg-dots.png" alt="Точки" role="presentation">
+    <div class="all-block__circle">
+    </div>
+    <div class="all-block__content">
+      <button class="filter-btn jsShowFilter">Фильтр</button>
+      <div class="container">
+        <div class="v-content-top">
+          <div class="home__aside-header">
+            <h1 class="resume__title">Работа - Открытые вакансии на сегодня</h1>
+            <div class="search">
+              <input type="text" name="vacancy_search_text" placeholder="Поиск" value="">
+              <button class="btn-red" id="search">
+                <i class="fa fa-search"></i>
+              </button>
             </div>
           </div>
-          <div class="v-content-bottom container-for-sidebar" style="position: relative;">
-            <div class="filter-overlay jsFilterOverlay">
+        </div>
+        <div class="v-content-bottom container-for-sidebar" style="position: relative;">
+          <div class="filter-overlay jsFilterOverlay">
+          </div>
+          <div class="v-content-bottom__left sidebar jsOpenFilter" id="sidebar">
+            <button class="vl-btn btn-card btn-red jsAccept btn-accept jsAcceptScrollFixed">Применить</button>
+            <div class="filter-close jsHideFilter"><span></span><span></span>
             </div>
-            <div class="v-content-bottom__left sidebar jsOpenFilter" id="sidebar" style="">
-              <button class="vl-btn btn-card btn-red jsAccept btn-accept jsAcceptScrollFixed" style="">Применить</button>
-              <div class="filter-close jsHideFilter"><span></span><span></span>
+            <div class="sidebar-inner" style="position: relative; transform: translate3d(0px, 0px, 0px);">
+              <div class="vl-block">
+
+                <multiselect
+                    v-model="region"
+                    :options="regions"
+                    :searchable="false"
+                    :close-on-select="true"
+                    :show-labels="false"
+                    placeholder="Выберите регион"></multiselect>
               </div>
-              <div class="sidebar-inner" style="position: relative; transform: translate3d(0px, 0px, 0px);">
-                <div class="vl-block">
-
-                  <multiselect
-                    v-model="formData.skils"
-                    tag-placeholder="Add this as new tag"
-                    placeholder="Выберите навыки"
-                    label="name" track-by="code"
-                    :options="multiSelectOptions"
-                    :multiple="true"
-                    :taggable="true"
-                    @tag="addTag">
-                  </multiselect>
-
-                </div>
-                <div class="vl-block">
-
-                  <multiselect
+              <div class="vl-block cities-select-block" 
+                    v-show="region !== ''">
+                    <multiselect
                     v-model="formData.city"
-                    :options="singleSelectOptions"
+                    :options="cities"
                     :searchable="true"
-                    :close-on-select="false"
+                    :close-on-select="true"
                     :show-labels="false"
                     placeholder="Выберите город"></multiselect>
+                 
+              </div>
+              <div class="vl-block">
 
+                <div class="vl-block__head jsOpenCheck" @click="experienceShow = !experienceShow">
+                  <p>Требуемый опыт</p>
+                  <span class="jsBtnPlus " v-show="!experienceShow">+</span>
+                  <span class="jsBtnMinus btn-active" v-show="experienceShow">-</span>
                 </div>
 
-                <div class="vl-block">
-                  <div class="vl-block__head jsOpenCheck open-services-mob"
-                            @click="experienceShow = !experienceShow"
-                  >
-                    <p>Требуемый опыт
-                    </p>
-                    <span class="jsBtnPlus" v-show="!experienceShow">+</span>
-                    <span class="jsBtnMinus btn-active" v-show="experienceShow">-</span>
-                  </div>
-                  <div class="vl-block__check jsCheckBlock" v-show="experienceShow">
+                <div class="vl-block__check" v-show="experienceShow">
 
                     <label class="checkbox" v-for="(item, index) in experience" :key="index">
                       <input type="checkbox" name="experience"
@@ -115,9 +105,9 @@
                     </label>
 
                   </div>
-                </div>
+              </div>
 
-                <div class="vl-block">
+              <div class="vl-block">
                   <div class="vl-block__head jsOpenCheck open-services-mob"
                        @click="categoriesShow = !categoriesShow"
                   >
@@ -139,7 +129,7 @@
                   </div>
                 </div>
 
-                <div class="vl-block">
+              <div class="vl-block">
                   <div class="vl-block__head open-services-mob"
                        @click="employmentTypeShow = !employmentTypeShow"
                   >
@@ -161,7 +151,7 @@
                   </div>
                 </div>
 
-                <div class="vl-block no-border">
+              <div class="vl-block no-border">
                   <div class="vl-block__head open-services-mob"
                        @click="paymentShow = !paymentShow"
                   >
@@ -175,79 +165,428 @@
                   </div>
                 </div>
 
-                <button class="vl-btn btn-card btn-red jsAccept jsAcceptScroll">Применить
-                </button>
-                <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 285px; height: 459px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
-            </div>
-            <div class="v-content-bottom__center scroll">
+              <button class="vl-btn btn-card btn-red jsAccept jsAcceptScroll">Применить</button>
+              <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 285px; height: 1455px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
+          </div>
+          <div class="v-content-bottom__center scroll">
 
-              <div class="single-card-resume" v-for="(item, index) in resume" :key=" index">
-                <div class="single-card-resume__top">
-                  <img class="single-card-resume__left-img" :src="item.imgSrc" alt="Фото Филипсонов Дмитрий" role="presentation">
-                  <div class="single-card-resume__top-left">
-                    <div class="single-card-resume__head">
-                      <h3>
-                        <!-- <a href="/resume/view/190">
-                          {{item.head}}
-                        </a> -->
-                         <router-link :to="{name: 'singleResume', params: {id: 1}}" >{{item.head}}</router-link>
-                      </h3>
-                    </div>
-                    <span class="single-card-resume__price">
-                        {{item.price}}
-                    </span>
-                    <p class="single-card-resume__name">
-                      {{item.name}}                                                                                                                                  · Донецк                                                                                    </p>
-                    <p class="single-card-resume__last-work">
-                      Последнее место работы
-                    </p>
-                    <p class="single-card-resume__name-work">
-                      {{item.lastWork}}
-                    </p>
-                    <p class="single-card-resume__date-work">
-                      {{item.dateWork}}                                                                                                                              </p>
-                    <p class="single-card-resume__last-check">
-                      {{item.lastCheck}}
-                    </p>
-                  </div>
-                </div>
-                <div class="single-card-resume__bottom">
-                </div>
+            <div class="single-card">
+              <div class="single-card__tr">
               </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/prodazhi-zakupki">Продажи, закупки</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2616" class="single-card__title mt5">
+                Менеджер по продажам строительных услуг    </a>
+              <div class="single-card__company">
+                <p>Ббс Альянс                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>54</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Обязанности:<br>
+                  Поиск и привлечение новых потенциальных клиентов<br>
+                  Осуществление холо...</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2616" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
 
-              <ul class="search-pagination"><li class="first disabled"><span>&lt;&lt;</span></li>
-                <li class="prev disabled"><span>&lt;</span></li>
-                <li class="active"><a href="/resume?page=1" data-page="0">1</a></li>
-                <li><a href="/resume?page=2" data-page="1">2</a></li>
-                <li><a href="/resume?page=3" data-page="2">3</a></li>
-                <li><a href="/resume?page=4" data-page="3">4</a></li>
-                <li><a href="/resume?page=5" data-page="4">5</a></li>
-                <li class="next"><a href="/resume?page=2" data-page="1">&gt;</a></li>
-                <li class="last"><a href="/resume?page=16" data-page="15">&gt;&gt;</a></li></ul>                                    </div>
-            <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1120px; height: 2731px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
-        </div>
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/medicina-farmacevtika">Медицина, фармацевтика</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2615" class="single-card__title mt5">
+                Фармацевт-провизор    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>53</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>- качественное обслуживание клиентов;<br>
+                  - реализация лекарственных препаратов и др...</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2615" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/prodazhi-zakupki">Продажи, закупки</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2614" class="single-card__title mt5">
+                Супервайзер    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>52</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Управлять и контролировать работу торговых агентов по продажам кондитерских изде...</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2614" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/prodazhi-zakupki">Продажи, закупки</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2613" class="single-card__title mt5">
+                Продавец    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>64</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    От 10 000 ₽
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется продавец в продуктовый магазин. </p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2613" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/buhgalteriya-audit">Бухгалтерия, аудит</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2612" class="single-card__title mt5">
+                Главный бухгалтер    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>58</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    От 30 000 ₽
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется главный бухгалтер (розничная сеть).</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2612" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/prodazhi-zakupki">Продажи, закупки</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2611" class="single-card__title mt5">
+                Кассир    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>60</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется кассир, магазин в центре Донецка.</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2611" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/sfera-obsluzhivaniya">Сфера обслуживания</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2610" class="single-card__title mt5">
+                Требуется персонал    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>94</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется персонал на предприятие (пищевая промышленность)</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2610" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/prodazhi-zakupki">Продажи, закупки</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2609" class="single-card__title mt5">
+                Менеджер по логистике    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>75</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется логист на предприятие (пищевая промышленность).</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2609" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/rabochie-specialnosti">Рабочие специальности</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2608" class="single-card__title mt5">
+                Слесарь механосборочных работ    </a>
+              <div class="single-card__company">
+                <p>ООО «ДОНФРОСТ»                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>99</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    От 12 000 ₽
+                                                            </span>
+              <div class="single-card__info">
+                <p>Осуществление простейших механосборочных операций на конвейере.</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2608" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+
+            <div class="single-card">
+              <div class="single-card__tr">
+              </div>
+              <div class="single-card__header">
+                <a class="btn-card btn-card-small btn-gray" href="/vacancy/transport-avto">Транспорт, авто</a>
+                <img class="single-card__image" src="../assets/categories/prodazhi-zakupki.svg" alt="Пустая компания" role="presentation">
+              </div>
+              <a href="/vacancy/view/2607" class="single-card__title mt5">
+                Водители    </a>
+              <div class="single-card__company">
+                <p>                    </p>
+              </div>
+              <div class="single-card__info-second"><span class="mr10">Добавлено: 01.07.2020</span>
+                <div class="single-card__view">
+                  <img class="single-card__icon mr5" src="../assets/icon-eye.png" alt="Иконка глаз" role="presentation">
+                  <span>86</span>
+                </div>
+                <a class="d-flex align-items-center mt5 mb5" href="/vacancy/doneck">
+                  <img class="single-card__icon" src="../assets/arr-place.png" alt="Стрелка" role="presentation">
+                  <span class="ml5">Донецк</span>
+                </a>
+              </div>
+              <span class="single-card__price">
+                                                                    Зарплата договорная
+                                                            </span>
+              <div class="single-card__info">
+                <p>Требуется водитель маршрут № 70(АС Щетинина-ЖД Вокзал).</p>
+              </div>
+              <div class="single-card__bottom">
+                <div class="single-card__info__soc">
+                </div>
+                <a href="/vacancy/view/2607" class="btn-card btn-red">
+                  Посмотреть полностью
+                </a>
+              </div>
+            </div>
+
+            <ul class="search-pagination"><li class="prev disabled"><span>Назад</span></li>
+              <li class="active"><a href="/vacancy?page=1" data-page="0">1</a></li>
+              <li><a href="/vacancy?page=2" data-page="1">2</a></li>
+              <li><a href="/vacancy?page=3" data-page="2">3</a></li>
+              <li><a href="/vacancy?page=4" data-page="3">4</a></li>
+              <li><a href="/vacancy?page=5" data-page="4">5</a></li>
+              <li class="next"><a href="/vacancy?page=2" data-page="1">Вперед</a></li></ul>
+          </div>
+          <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 1120px; height: 2874px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 200%; height: 200%;"></div></div></div></div>
       </div>
-    </section>    <footer class="footer">
+    </div>
+  </section>    <footer class="footer">
     <a class="footer__craft-link" href="https://web-artcraft.com/" target="_blank" rel="nofollow">Разработано CraftGroup</a>
-  </footer>
-  </div>
+  </footer></div>
 </template>
 
 <script>
- import {mapGetters} from 'vuex';
-  import Multiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect'
   export default {
-    name: "resume",
+    name: "vacancy",
     components: {
       Multiselect
     },
-    data() {
+     data() {
       return {
-        experienceShow: false,
-        categoriesShow: false,
-        employmentTypeShow: false,
-        paymentShow: false,
-        
+          region: '',
+          city: '',
+          // citiesShow: false,
+          regions: ['ДНР', 'ЛНР'],
+          cities: ['Город_1', 'Город_2'],
+          experienceShow: false,
+          categoriesShow: false,
+          employmentTypeShow: false,
+          paymentShow: false,
+
         experience: [
           {id: 1, value: 'Без опыта работы'},
           {id: 2, value: 'от 1 года'},
@@ -264,67 +603,26 @@
           {id: 2, value: 'Полная занятость'},
           {id: 3, value: 'Неполная занятость'}
         ],
-        formData: {
+
+          formData: {
           // Arrays of checked elements
           experience: [],
           categories: [],
           employmentType: [],
           skils: [],
           city: '',
+          region: this.region,
           minSalary: '',
           maxSalary: '',
         },
-        // Multiselect
-        multiSelectOptions: [
-          { name: 'Vue.js', code: 'vu' },
-          { name: 'Javascript', code: 'js' },
-          { name: 'Open Source', code: 'os' }
-        ],
-        // singleSelect
-        singleSelectOptions: ['Донецк', 'Макеевка', 'Горловка',],
-        // Users
-        resume: [
-          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
-            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
-          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
-            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
-          {imgSrc: 'face1.jpg', head: 'Инженер-Конструктор. (Cad-Дизайнер) ', price: 'По договоренности', name: 'Филипсонов Дмитрий · Донецк',
-            lastWork: ' Конструктор, ГП "ДонПКТИ" ', dateWork: 'Сентябрь 2018', lastCheck: 'Обновлено 17.06.2020'},
-        ]
       }
     },
-    beforeMount() {
-      console.log('beforeMount');
-      this.$store.dispatch('getCategories').then(data => {
-        return data;
-      });
-
-    },
-    computed: {
-      ...mapGetters([
-        // 'categories',
-      ]),
-    },
-    methods: {
-      addTag (newTag) {
-        const tag = {
-          name: newTag,
-          code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-        }
-        this.options.push(tag);
-        this.value.push(tag);
-      },
-      nameWithLang ({ name, language }) {
-        return `${name} — [${language}]`
-      }
-    }
   }
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style scoped>
-
   #search{
     display: flex;
     justify-content: center;
@@ -1437,4 +1735,230 @@
     -o-transition: .2s;
     transition: .2s; }
 
+    .single-card {
+      text-align: left;
+    position: relative;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    min-height: 210px;
+    margin: 15px 10px;
+    padding: 20px 55px 10px 25px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    background-color: #fff; }
+@media (max-width: 993px) {
+    .single-card {
+        margin-left: 5px;
+        margin-right: 0;
+        padding: 20px; } }
+.single-card__title {
+    max-width: 555px;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+.single-card__company{
+    margin-bottom: 5px;
+    color: dimgrey;
+}
+.single-card__info {
+    font-size: 11px; }
+.single-card__info p {
+    margin: 0;
+    line-height: 1.8; }
+.single-card__info-second {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #a8a8a8;
+    letter-spacing: 0.33px;
+    font-size: 10px;
+    font-weight: 500; }
+.single-card__info-second a {
+    text-decoration: none;
+    color: inherit; }
+.single-card__like {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: auto;
+    color: #a8a8a8;
+    font-size: 11px;
+    letter-spacing: 0.43px;
+    font-weight: 500;
+    text-decoration: none; }
+.single-card__like:hover {
+    color: #dd3d34; }
+.single-card__like .fa-heart-o {
+    margin-right: 5px;
+    font-size: 13px; }
+.single-card__view {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 5px 0; }
+.single-card__icon {
+    max-width: 13px; }
+.single-card__tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 100%;
+    right: 90px;
+    overflow: hidden; }
+.single-card__tr:before {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    content: '';
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    -webkit-transform: translateY(50%) rotate(45deg);
+    -ms-transform: translateY(50%) rotate(45deg);
+    transform: translateY(50%) rotate(45deg); }
+
+    .v-content-bottom__center .single-card__header {
+    position: relative;
+    padding-right: 60px; }
+    .v-content-bottom__center .single-card__header a {
+    border-radius: 25px;
+    font-size: 12px; }
+
+    .btn-gray {
+    color: #ffffff;
+    background-color: #a8a8a8;
+    border-radius: 10px; }
+    .btn-gray:hover {
+    color: #ffffff;
+    background-color: #757575; }
+
+    .v-content-bottom__center .single-card__image {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: auto;
+    max-width: 66px;
+    max-height: 50px;
+    min-height: 50px; }
+
+    .v-content-bottom__center .single-card__title {
+    max-width: 400px;
+    margin-bottom: 10px;
+    color: #262626;
+    font-size: 20px;
+    font-weight: 700; }
+@media (max-width: 530px) {
+    .v-content-bottom__center .single-card__title {
+        width: 83%; } }
+
+        .v-content-bottom__center .single-card__info-second {
+    position: relative;
+    font-size: 12px; }
+@media (max-width: 330px) {
+    .v-content-bottom__center .single-card__info-second {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start; } }
+.v-content-bottom__center .single-card__info-second > span {
+    margin-right: 22px; }
+.v-content-bottom__center .single-card__info-second .single-card__view {
+    margin-right: 22px; }
+@media (max-width: 478px) {
+    .v-content-bottom__center .single-card__info-second .single-card__view {
+        margin-left: 0 !important; } }
+
+  .v-content-bottom__center .single-card__bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%; }
+.v-content-bottom__center .single-card__bottom > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: auto;
+    height: 30px;
+    margin-left: auto;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 19px;
+    background-color: #dd3d34; }
+@media (max-width: 500px) {
+    .v-content-bottom__center .single-card__bottom > a {
+        margin-right: auto; } }
+        .v-content-bottom__center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-right: 40px; 
+    }
+@media (max-width: 992px) {
+    .v-content-bottom__center {
+        margin-right: 0; } }
+@media (max-width: 478px) {
+    .v-content-bottom__center {
+        width: 100%; } }
+.v-content-bottom__center .single-card {
+    width: 650px; }
+@media (max-width: 1400px) {
+    .v-content-bottom__center .single-card {
+        width: 550px;
+        padding-right: 25px; } }
+@media (max-width: 1250px) {
+    .v-content-bottom__center .single-card {
+        width: 650px; } }
+@media (max-width: 768px) {
+    .v-content-bottom__center .single-card {
+        width: 100%;
+        margin-left: 0; } }
 </style>

@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import home from '../views/home.vue'
 import resume from "../views/resume";
+import vacancy from "../views/vacancy";
+import singleResume from "../views/singleResume";
+
 
 Vue.use(VueRouter)
 
@@ -9,12 +12,22 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: home
   },
     {
     path: '/resume',
     name: 'resume',
     component: resume
+  },
+  {
+    path: '/vacancy',
+    name: 'vacancy',
+    component: vacancy
+  },
+  {
+    path: '/resume/view/:id',
+    name: 'singleResume',
+    component: singleResume
   },
   {
     path: '/about',
