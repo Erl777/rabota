@@ -4,6 +4,9 @@ import home from '../views/home.vue'
 import resume from "../views/resume";
 import vacancy from "../views/vacancy";
 import singleResume from "../views/singleResume";
+import singleVacancy from "../views/singleVacancy";
+import citiesVacancies from "../views/citiesVacancies";
+import professions from "../views/professions";
 
 
 Vue.use(VueRouter)
@@ -30,13 +33,20 @@ Vue.use(VueRouter)
     component: singleResume
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/vacancy/view/:id',
+    name: 'singleVacancy',
+    component: singleVacancy
+  },
+  {
+    path: '/cities',
+    name: 'cities',
+    component: citiesVacancies
+  },
+  {
+    path: '/professions',
+    name: 'professions',
+    component: professions
+  },
 ]
 
 const router = new VueRouter({
